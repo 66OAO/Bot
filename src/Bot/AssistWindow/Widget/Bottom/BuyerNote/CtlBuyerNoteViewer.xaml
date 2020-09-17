@@ -1,0 +1,181 @@
+<UserControl
+	x:Class="Bot.AssistWindow.Widget.Bottom.BuyerNote.CtlBuyerNoteViewer" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:Bot.AssistWindow.Widget.Bottom.BuyerNote" 
+    xmlns:elib="clr-namespace:BotLib.Wpf.Controls;assembly=BotLib">
+	<Grid
+		FocusManager.FocusedElement="{Binding ElementName=tboxBuyer}">
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="auto" />
+			<RowDefinition
+				Height="*" />
+			<RowDefinition
+				Height="auto" />
+			<RowDefinition
+				Height="auto" />
+		</Grid.RowDefinitions>
+		<StackPanel
+			Orientation="Horizontal">
+			<GroupBox
+				Header="按日期筛选"
+				Padding="5">
+				<StackPanel
+					Orientation="Horizontal">
+					<TextBlock
+						Text="从"
+						VerticalAlignment="Center" />
+					<DatePicker
+						Name="dpFrom"
+						Margin="5 0"
+						SelectedDateChanged="datePicker_SelectedDateChanged" />
+					<TextBlock
+						Text="到"
+						VerticalAlignment="Center" />
+					<DatePicker
+						Name="dpTo"
+						Margin="5 0 0 0"
+						SelectedDateChanged="datePicker_SelectedDateChanged" />
+					<CheckBox
+						Name="cboxLastDays"
+						Content="最近3天"
+						VerticalAlignment="Center"
+						Margin="20 0 0 0"
+						Click="cboxLastDays_Click" />
+				</StackPanel>
+			</GroupBox>
+			<GroupBox
+				Header="按【顾客】旺旺号筛选"
+				Margin="20 0"
+				Padding="5">
+				<TextBox
+					Name="tboxBuyer"
+					MaxLines="1"
+					VerticalAlignment="Center"
+					Width="140"
+					TextChanged="tboxSeller_TextChanged" />
+			</GroupBox>
+			<GroupBox
+				Header="按【客服】旺旺号筛选"
+				Padding="5">
+				<TextBox
+					Name="tboxSeller"
+					MaxLines="1"
+					VerticalAlignment="Center"
+					Width="140"
+					TextChanged="tboxSeller_TextChanged" />
+			</GroupBox>
+			<Button
+				Name="btnReset"
+				Content="清除条件"
+				VerticalAlignment="Center"
+				Margin="10 0 0 0"
+				Click="btnReset_Click" />
+		</StackPanel>
+		<DataGrid
+			Name="dgMain"
+			Grid.Row="1"
+			MinHeight="300"
+			MaxHeight="500"
+			Margin=" 0 10 0 0"
+			AutoGenerateColumns="False"
+			IsReadOnly="True"
+			GridLinesVisibility="None"
+			RowHeight="20"
+			HeadersVisibility="Column"
+			SelectionMode="Single"
+			Background="#FFFFFFFF"
+			Hyperlink.Click="hyperLink_Click">
+			<DataGrid.Columns>
+				<DataGridTextColumn
+					Header="顾客"
+					Width="auto"
+					Binding="{Binding BuyerMainNick}" />
+				<DataGridTextColumn
+					Header="记录者"
+					Width="auto"
+					Binding="{Binding Recorder}" />
+				<DataGridTextColumn
+					Header="便签"
+					Width="*"
+					Binding="{Binding Note}" />
+				<DataGridTextColumn
+					Header="更新时间"
+					Width="auto"
+					Binding="{Binding Modified}" />
+				<DataGridHyperlinkColumn
+					Header="删除"
+					Width="auto"
+					Binding="{Binding Delete}" />
+				<DataGridHyperlinkColumn
+					Header="详情"
+					Width="auto"
+					Binding="{Binding Detail}" />
+			</DataGrid.Columns>
+			<DataGrid.RowDetailsTemplate>
+				<DataTemplate>
+					<Border
+						Margin="10"
+						Padding="10"
+						BorderBrush="#FF4682B4"
+						BorderThickness="2"
+						CornerRadius="5">
+						<TextBlock
+							TextWrapping="Wrap"
+							Text="{Binding Path=Note}" />
+					</Border>
+				</DataTemplate>
+			</DataGrid.RowDetailsTemplate>
+		</DataGrid>
+		<elib:CtlPager
+			Name="pager"
+			Grid.Row="2"
+			HorizontalAlignment="Right" />
+		<Grid
+			Row="3"
+			Margin="0 10">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition
+					Width="auto" />
+				<ColumnDefinition
+					Width="auto" />
+				<ColumnDefinition
+					Width="auto" />
+				<ColumnDefinition
+					Width="auto" />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<Button
+				Content="帮助"
+				HorizontalAlignment="Left"
+				Click="btnHelp_Click" />
+			<Button
+				Name="btnDeleteAll"
+				Grid.Column="1"
+				ToolTip="删除当前【筛选出】的所有便签"
+				Content="全部删除"
+				Margin="20 0"
+				Click="btnDeleteAll_Click" />
+			<Button
+				Name="btnExport"
+				Grid.Column="2"
+				Content="导出"
+				ToolTip="导出成csv格式，便于在excel中查看"
+				Click="btnExport_Click" />
+			<Button
+				Name="btnImport"
+				Grid.Column="3"
+				Content="导入"
+				Margin="20 0"
+				Click="BtnImport_Click" />
+			<Button
+				Grid.Column="4"
+				Content="关闭"
+				HorizontalAlignment="Right"
+				Click="btnClose_Click" />
+		</Grid>
+	</Grid>
+</UserControl>

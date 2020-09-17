@@ -1,0 +1,38 @@
+<UserControl
+	x:Class="Bot.Options.CtlShortcutOptions" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:Bot.Options">
+	<StackPanel
+		Margin="15">
+		<GroupBox
+			Header="话术显示"
+			Padding="5">
+			<StackPanel>
+				<RadioButton
+					Name="rbtShop"
+					Margin="0 5">仅显示店铺【公用】的短语(默认)</RadioButton>
+				<RadioButton
+					Name="rbtSelf"
+					Margin="0 5">仅显示客服xx私人的短语</RadioButton>
+				<RadioButton
+					Name="rbtAll"
+					Margin="0 5">同时显示【公用和私人】短语</RadioButton>
+			</StackPanel>
+		</GroupBox>
+		<GroupBox
+			Padding="5"
+			Margin="0 10">
+			<StackPanel>
+				<CheckBox
+					Name="cboxShowButtons">显示话术面板第一行的按钮(如下所示)</CheckBox>
+				<Image
+					Stretch="None"
+					HorizontalAlignment="Left"
+					Source="/Bot;component/Asset/Image/ShortcutButtons.png" />
+			</StackPanel>
+		</GroupBox>
+	</StackPanel>
+</UserControl>

@@ -1,0 +1,90 @@
+<UserControl
+	x:Class="Bot.Options.CtlSuperAccountOptions" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:Bot.Options" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
+	<Grid
+		Margin="15">
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="auto" />
+			<RowDefinition
+				Height="auto" />
+			<RowDefinition
+				Height="auto" />
+			<RowDefinition
+				Height="auto" />
+			<RowDefinition
+				Height="auto" />
+			<RowDefinition
+				Height="auto" />
+			<RowDefinition
+				Height="auto" />
+			<RowDefinition
+				Height="auto" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+		<TextBlock
+			Name="tbkTip"
+			TextWrapping="Wrap">请输入xx店铺的特权子账号</TextBlock>
+		<TextBlock
+			Name="tbkAlert"
+			Text="需要在电脑上登录主账号，或特权子账号，才能设置特权子账号"
+			TextWrapping="Wrap"
+			Foreground="#FFFF0000"
+			Visibility="Collapsed" />
+		<xctk:WatermarkTextBox
+			Name="tboxNicks"
+			Grid.Row="1"
+			Margin="0 5"
+			TextWrapping="Wrap"
+			Watermark="多个子账号用【逗号】隔开"
+			MinLines="2"
+			MaxLines="3"
+			VerticalScrollBarVisibility="Auto" />
+		<TextBlock
+			Name="tbkNote"
+			Grid.Row="3"
+			Foreground="#FF696969"
+			TextWrapping="Wrap">说明：特权子账号权限与主账号相同，可进行高危操作(如：导入数据)</TextBlock>
+		<GroupBox
+			Name="gboxSc"
+			Grid.Row="4"
+			Header="能编辑（增、删、改）【话术】的账号"
+			Padding="5"
+			Margin="0 15 0 0">
+			<StackPanel
+				Orientation="Horizontal">
+				<RadioButton
+					Name="rbtScAll">所有账号（默认）</RadioButton>
+				<RadioButton
+					Name="rbtScSuper">仅：主号、特权子号</RadioButton>
+			</StackPanel>
+		</GroupBox>
+		<GroupBox
+			Name="gboxKn"
+			Grid.Row="5"
+			Header="能编辑（增、删、改）【宝贝知识】的账号"
+			Padding="5"
+			Margin="0 15 0 0">
+			<StackPanel
+				Orientation="Horizontal">
+				<RadioButton
+					Name="rbtKnAll">所有账号（默认）</RadioButton>
+				<RadioButton
+					Name="rbtKnSuper">仅：主号、特权子号</RadioButton>
+			</StackPanel>
+		</GroupBox>
+		<GroupBox
+			Name="gboxRobot"
+			Grid.Row="6"
+			Header="能编辑（增、删、改）【机器人规则】的账号"
+			Padding="5"
+			Margin="0 15 0 0">
+			<StackPanel
+				Orientation="Horizontal">
+				<RadioButton
+					Name="rbtRobotAll">所有账号（默认）</RadioButton>
+				<RadioButton
+					Name="rbtRobotSuper">仅：主号、特权子号</RadioButton>
+			</StackPanel>
+		</GroupBox>
+	</Grid>
+</UserControl>

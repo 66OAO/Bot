@@ -1,0 +1,104 @@
+﻿<UserControl x:Class="Bot.AssistWindow.Widget.Bottom.CtlBuyerMemo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <FrameworkElement.Resources>
+        <ResourceDictionary>
+            <ContextMenu
+				x:Key="menuSynBuyerNote" />
+            <ContextMenu
+				x:Key="menuMemo" />
+        </ResourceDictionary>
+    </FrameworkElement.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+				Name="rd2" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+				Width="auto" />
+            <ColumnDefinition />
+            <ColumnDefinition
+				Width="auto" />
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition
+					Height="auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+        </Grid>
+        <Grid
+			Column="2"
+			Margin="0 1"
+            >
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition
+					Height="auto" />
+            </Grid.RowDefinitions>
+        </Grid>
+        <Grid
+			Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition
+					Height="auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock
+				Grid.Row="1"
+				Text="顾&#xA;客&#xA;便&#xA;签"
+				Padding="3"
+				LineStackingStrategy="BlockLineHeight"
+				LineHeight="12" />
+        </Grid>
+        <TextBox
+			Name="tboxBuyerNote"
+			VerticalScrollBarVisibility="Auto"
+			Padding="5"
+			AcceptsReturn="True"
+			AcceptsTab="True"
+			TextWrapping="Wrap"
+			Grid.Row="1"
+			Grid.Column="1" LostFocus="tboxBuyerNote_LostFocus" />
+        <Grid
+			Column="2"
+			Row="1"
+			Margin="0 1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition
+					Height="auto" />
+            </Grid.RowDefinitions>
+            <Button
+				Padding="3"
+				ContextMenu="{StaticResource menuSynBuyerNote}"
+				Background="#00FFFFFF"
+				Content="详&#xA;情"
+                Click="btnDetail_Click"/>
+            <Button
+				Padding="3 0"
+				Grid.Row="1"
+				FontSize="7"
+				Content="▼"
+				Background="#00FFFFFF"
+				ContextMenu="{StaticResource menuSynBuyerNote}"
+                Click="btnMemoCtxMenu_Click"/>
+        </Grid>
+        <GridSplitter
+			Name="gsMemo"
+			Grid.Row="0"
+			Grid.ColumnSpan="3"
+			Height="2"
+			VerticalAlignment="Bottom"
+			HorizontalAlignment="Stretch"
+			ShowsPreview="True"
+			Background="#FFF0F8FF" />
+    </Grid>
+</UserControl>

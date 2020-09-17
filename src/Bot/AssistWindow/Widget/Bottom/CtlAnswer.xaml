@@ -1,0 +1,15 @@
+<UserControl x:Class="Bot.AssistWindow.Widget.Bottom.CtlAnswer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:Bot.AssistWindow.Widget.Bottom">
+    <TreeView
+		Name="tvMain"
+		ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+		MouseDoubleClick="tvMain_MouseDoubleClick"
+		MouseLeftButtonUp="tvMain_MouseLeftButtonUp"
+		PreviewKeyDown="tvMain_PreviewKeyDown"
+        SelectedItemChanged="tvMain_SelectedItemChanged"
+        />
+</UserControl>

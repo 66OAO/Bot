@@ -1,0 +1,50 @@
+﻿<UserControl
+	x:Class="Bot.Common.TreeviewHelper.CtlTreeView" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:Bot.Common.TreeviewHelper" 
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+    xmlns:c="clr-namespace:Bot.Common">
+    <UIElement.CommandBindings>
+        <CommandBinding
+			Command="c:Commands.Clear"
+			Executed="commands_Clear" />
+    </UIElement.CommandBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+				Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid
+			Name="grdSearch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition
+					Width="auto" />
+            </Grid.ColumnDefinitions>
+            <xctk:WatermarkTextBox
+				Watermark="搜索：多个关键字用空格隔开"
+				x:Name="tbxSearch"
+				TextChanged="tbxSearch_TextChanged" />
+            <Button
+				Command="c:Commands.Clear"
+				Grid.Column="1"
+				Padding="10 0">清空(K)</Button>
+        </Grid>
+        <TreeView
+			Name="tvMain"
+			Grid.Row="1"
+			ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+			ScrollViewer.VerticalScrollBarVisibility="Auto"
+			AllowDrop="True"
+			MouseDoubleClick="tvMain_MouseDoubleClick"
+			DragOver="treeView_DragOver"
+			Drop="treeView_Drop"
+			MouseMove="tvMain_MouseMove"
+			MouseLeftButtonUp="tvMain_MouseLeftButtonUp" >
+        </TreeView>
+    </Grid>
+</UserControl>

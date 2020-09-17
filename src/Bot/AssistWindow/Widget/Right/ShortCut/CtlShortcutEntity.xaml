@@ -1,0 +1,82 @@
+﻿<UserControl 
+    x:Class="Bot.AssistWindow.Widget.Right.ShortCut.CtlShortcutEntity" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:Bot.AssistWindow.Widget.Right.ShortCut" 
+    xmlns:ht="clr-namespace:BotLib.Wpf.Controls;assembly=BotLib"
+	Margin="-18 2 0 2"
+	HorizontalAlignment="Stretch">
+    <FrameworkElement.Resources>
+        <ResourceDictionary />
+    </FrameworkElement.Resources>
+    <Grid>
+        <Expander>
+            <ContentControl.Content>
+                <GroupBox
+					Margin="20 3 3 3"
+					Padding="5 10 5 5"
+					Background="#FFF5F5F5"
+					HorizontalAlignment="Stretch">
+                    <Grid
+						HorizontalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition
+								Height="auto" />
+                            <RowDefinition
+								Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition
+								Width="auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <ht:CtlHighlightableTextBlock
+							Grid.ColumnSpan="3"
+							TextBlock.TextWrapping="Wrap"
+							x:Name="tblkContent" />
+                        <Image
+							Name="imgContent"
+							Grid.Row="1"
+							Grid.Column="1"
+							Margin="0 15 0 0"
+                            MaxHeight="200"
+                            MinWidth="200"
+							Visibility="Collapsed" />
+                    </Grid>
+                </GroupBox>
+            </ContentControl.Content>
+        </Expander>
+        <StackPanel
+			Orientation="Horizontal"
+			Height="22"
+			Margin="21 0 0 0"
+			HorizontalAlignment="Stretch"
+			VerticalAlignment="Top"
+			ToolTip="【单击】放到千牛回复框，【双击】发送">
+            <TextBlock
+				Padding="5 3 0 0" />
+            <Image
+				Name="imgMain"
+				Margin="0 0 2 0"
+				Width="16"
+				Height="16"
+				Source="{StaticResource imgImage20}"
+				Visibility="Collapsed"
+				MouseEnter="imgMain_MouseEnter"
+				MouseLeave="imgMain_MouseLeave" />
+            <ht:CtlHighlightableTextBlock
+				FrameworkElement.VerticalAlignment="Center"
+				TextBlock.Background="#FF4682B4"
+				TextBlock.Foreground="#FFFFFFFF"
+				TextBlock.Padding="5,0"
+				x:Name="tbkKeyText" />
+            <ht:CtlHighlightableTextBlock
+				FrameworkElement.VerticalAlignment="Center"
+				TextBlock.Padding="2,0"
+				x:Name="tbkHeader" />
+        </StackPanel>
+    </Grid>
+</UserControl>

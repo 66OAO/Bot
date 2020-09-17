@@ -1,0 +1,25 @@
+<UserControl
+	x:Class="Bot.Options.CtlBuyerNoteOptions" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:Bot.Options">
+	<StackPanel
+		Margin="15">
+		<GroupBox
+			Header="【顾客便签编辑框】优先显示【当前顾客】的"
+			Padding="5">
+			<StackPanel>
+				<RadioButton
+					Name="rbtSelf"
+					Margin="0 5">客服自己编写的便签【推荐】</RadioButton>
+				<RadioButton
+					Name="rbtNewest">最新的便签（有可能是同店铺其它客服写的便签）</RadioButton>
+			</StackPanel>
+		</GroupBox>
+		<CheckBox
+			Name="cboxShowDetailAsTooltip"
+			Margin="0 10">鼠标进入"顾客便签编辑框"时，提示"便签详情"(推荐)</CheckBox>
+	</StackPanel>
+</UserControl>

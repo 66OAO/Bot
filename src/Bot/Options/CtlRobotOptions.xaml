@@ -1,0 +1,116 @@
+<UserControl
+	x:Class="Bot.Options.CtlRobotOptions" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:Bot.Options">
+	<StackPanel
+		Margin="15">
+		<StackPanel
+			Background="#FFF5DEB3">
+			<GroupBox
+				Header="【获取】千牛聊天记录"
+				Padding="10">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition
+							Width="auto" />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					<StackPanel>
+						<RadioButton
+							Name="rbtNo"
+							Click="rbtNo_Click">不允许 （将无法使用机器人功能）</RadioButton>
+						<RadioButton
+							Name="rbtAllow"
+							Margin="0 5"
+							Click="rbtAllow_Click">允许  （获取千牛聊天记录）</RadioButton>
+						<TextBlock
+							Name="tblkOcr"
+							Visibility="Collapsed"
+							Margin="20 0 0 0"
+							Foreground="#FFFF0000">OCR只支持64位操作系统。你的系统是32位的，无法使用OCR!</TextBlock>
+					</StackPanel>
+					<Button
+						Grid.Column="1"
+						Padding="20 5"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center"
+						Click="btnHelp_Click">帮助</Button>
+				</Grid>
+			</GroupBox>
+		</StackPanel>
+		<StackPanel
+			Name="spnOther"
+			Margin="0 5 0 0"
+			Background="#FFE0FFFF">
+			<StackPanel
+				Margin="15">
+				<GroupBox
+					Header="【全自动模式】设置"
+					Padding="10"
+					Margin="0 10 0 0">
+					<StackPanel>
+						<StackPanel
+							Orientation="Horizontal"
+							Margin="10 5">
+							<TextBlock
+								VerticalAlignment="Center">延迟</TextBlock>
+							<TextBox
+								Name="tboxAutoDelay"
+								MinWidth="20"
+								TextChanged="tboxAutoDelay_TextChanged">0</TextBox>
+							<TextBlock
+								VerticalAlignment="Center">秒后发送答案</TextBlock>
+						</StackPanel>
+						<GroupBox
+							Header="找不到答案时发送"
+							Margin="0 5 0 0">
+							<TextBox
+								Name="tboxNoAnswerTip"
+								Height="50"
+								VerticalScrollBarVisibility="Auto"
+								AcceptsReturn="True"
+								AcceptsTab="True"
+								TextWrapping="Wrap"
+								Padding="3"
+								LostFocus="tboxNoAnswerTip_LostFocus" />
+						</GroupBox>
+						<CheckBox
+							Name="cboxCancelAutoOnReset"
+							Margin="0 5 0 0">重启千牛客服时，取消全自动模式（避免一启动就自动回复）（推荐）</CheckBox>
+					</StackPanel>
+				</GroupBox>
+				<GroupBox
+					Header="【发送模式】设置"
+					Padding="10"
+					Margin="0 10 0 0">
+					<StackPanel>
+						<StackPanel
+							Orientation="Horizontal"
+							Margin="10 5">
+							<TextBlock
+								VerticalAlignment="Center">延迟</TextBlock>
+							<TextBox
+								Name="tboxSendDelay"
+								MinWidth="20"
+								TextChanged="tboxSendDelay_TextChanged">0</TextBox>
+							<TextBlock
+								VerticalAlignment="Center">秒后发送答案</TextBlock>
+						</StackPanel>
+					</StackPanel>
+				</GroupBox>
+				<GroupBox
+					Header="【引用模式】设置"
+					Padding="10"
+					Margin="0 10 0 0">
+					<StackPanel>
+						<CheckBox
+							Name="cboxAlwaysSend"
+							Margin="10 5">命中规则设置中的【完全匹配】问题时，直接发送答案</CheckBox>
+					</StackPanel>
+				</GroupBox>
+				<CheckBox
+					Name="cboxKeyExclude"
+					Margin="10"
+					PreviewMouseDown="cboxKeyExclude_PreviewMouseDown">规则的关键字设置，允许使用【排除】关键字</CheckBox>
+			</StackPanel>
+		</StackPanel>
+	</StackPanel>
+</UserControl>

@@ -1,0 +1,40 @@
+<UserControl
+	x:Class="Bot.AssistWindow.Widget.Bottom.CtlBuyer" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:Bot.AssistWindow.Widget.Bottom">
+	<StackPanel
+		Orientation="Horizontal">
+		<Image
+			Name="imgErr"
+			ToolTip="无法读取聊天记录"
+			Visibility="Collapsed"
+			Source="{StaticResource imgErrorRed16}"
+			Width="16"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Center"
+			Margin="2 2 0 0" />
+		<Image
+			Name="imgNoBuyer"
+			Visibility="Collapsed"
+			Source="{StaticResource imgErrorGray16}"
+			Width="16"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Center"
+			Margin="2 2 0 0" />
+		<Image
+			Name="imgWangWang"
+			Visibility="Collapsed"
+			Source="{StaticResource imgWangWang16}"
+			Width="16"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Center"
+			Margin="2 2 0 0" />
+		<TextBlock
+			Name="tbkBuyer"
+			VerticalAlignment="Center"
+			Margin="5 0 0 0" />
+	</StackPanel>
+</UserControl>

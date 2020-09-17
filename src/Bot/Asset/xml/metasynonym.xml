@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+  <!--解析器为：class SystemSynonymReader-->
+  <!--<Dir Name="Meta">:不要加Dir，否则会在同类词浏览器显示一个空文件夹 -->
+    <Item Meaning="x1:" Content="【n选1】选择符"/>
+    <Item Meaning="x01:" Content="【选0到1个】选择符"/>
+    <Item Meaning="*" Content="通配【任意个】文字"/>
+    <Item Meaning="*:1" Content="通配【1个】文字(注：如果把1改成2，表示通配2个文字，依此类推)"/>
+    <Item Meaning="*:1," Content="通配【至少1个】文字(注：如果把1改成2，表示通配至少2个文字，依此类推)"/>
+    <Item Meaning="*:,2" Content="通配【至多2个】文字(注：如果把2改成3，表示通配至多3个文字，依此类推)"/>
+    <Item Meaning="*:1,2" Content="通配【1到2个】文字(注：可以把1，2修改成其它整数，表示通配相应范围的字数)"/>
+    
+    <!--数字已实现，但为了不干扰长度通配符，先禁用吧-->
+    <!--<Item Meaning="*:数字" Content="通配【数字】(注：不论整数或小数都通配)"/>-->
+  
+  
+    <!--<Item Meaning="z:转人工服务" Content="将对方转接给人工客服（用于机器人全自动模式）"/>
+    <Item Meaning="y:对方账号" Content="对方的淘宝账号"/>
+    <Item Meaning="y:本方主账号" Content="本方的淘宝主账号"/>
+    <Item Meaning="y:本方聊天账号" Content="本方的当前聊天账号"/>
+    <Item Meaning="y:当前日期" Content="格式：xx年xx月xx日"/>
+    <Item Meaning="y:当前时间" Content="格式：xx时xx分xx秒"/>
+    <Item Meaning="y:当前日期时间" Content="格式：xx年xx月xx日 xx时xx分xx秒"/>
+    <Item Meaning="y:对方称呼" Content="格式：姓+性别，如：王先生"/>
+    <Item Meaning="*:地址" Content="通配【地址】信息(注：xx省xx市xx县...，不论完整的还是部分的地址均通配)"/>
+    <Item Meaning="*:时间" Content="通配【时间】(注：xx年xx月xx日 xx时xx分xx秒，不论完整还是部分的时间均通配)"/>-->
+  <!--</Dir>-->
+</Root>

@@ -1,0 +1,29 @@
+<et:EtWindow
+	x:Class="Bot.AssistWindow.Widget.Bottom.BuyerNote.WndBuyerNoteMgr" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:local="clr-namespace:Bot.AssistWindow.Widget.Bottom.BuyerNote" 
+    xmlns:et="clr-namespace:Bot.Common.Windows"
+	et:Title="顾客便签管理器"
+	SizeToContent="Height"
+	ResizeMode="NoResize"
+	Width="900">
+	<Grid
+		Margin="5">
+		<TabControl>
+			<TabItem
+				Header="顾客便签"
+				Style="{StaticResource tabLevel1}">
+				<local:CtlBuyerNoteViewer
+					Margin="15" />
+			</TabItem>
+			<TabItem
+				Header="常用便签" Height="25" VerticalAlignment="Top">
+				<local:CtlFavoriteNotes
+					Margin="15" />
+			</TabItem>
+		</TabControl>
+	</Grid>
+</et:EtWindow>

@@ -1,0 +1,55 @@
+<UserControl
+	x:Class="Bot.AssistWindow.Widget.Bottom.BuyerNote.CtlFavoriteNotes" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:Bot.AssistWindow.Widget.Bottom.BuyerNote">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="auto" />
+			<RowDefinition
+				Height="auto" />
+		</Grid.RowDefinitions>
+		<DataGrid
+			Name="dgMain"
+			Height="400"
+			Margin=" 0 10 0 0"
+			AutoGenerateColumns="False"
+			IsReadOnly="True"
+			GridLinesVisibility="None"
+			RowHeight="20"
+			HeadersVisibility="Column"
+			SelectionMode="Single"
+			Background="#FFFFFFFF"
+			Hyperlink.Click="hyperlink_Click">
+			<DataGrid.Columns>
+				<DataGridTextColumn
+					Header="便签"
+					Width="*"
+					Binding="{Binding Note}" />
+				<DataGridHyperlinkColumn
+					Header="删除"
+					Width="auto"
+					Binding="{Binding Delete}" />
+				<DataGridHyperlinkColumn
+					Header="编辑"
+					Width="auto"
+					Binding="{Binding Edit}" />
+			</DataGrid.Columns>
+		</DataGrid>
+		<Grid
+			Row="1"
+			Margin="0 10 0 0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<Button
+				Content="新增..."
+				HorizontalAlignment="Right"
+				Click="btnCreate_Click" />
+			<Button
+				Grid.Column="1"
+				Content="关闭"
+				HorizontalAlignment="Right"
+				Click="btnClose_Click" />
+		</Grid>
+	</Grid>
+</UserControl>

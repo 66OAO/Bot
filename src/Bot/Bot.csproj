@@ -1,0 +1,1601 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CE3F844C-8509-499D-91F1-7E61BD5416C6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bot</RootNamespace>
+    <AssemblyName>Bot</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>发布\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Bot.SingleStartUp.StartUp</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SplitButtonWpf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bin\SplitButtonWpf.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperSocket.ClientEngine, Version=0.9.0.0, Culture=neutral, PublicKeyToken=ee9af13f57f00acc, processorArchitecture=MSIL">
+      <HintPath>..\packages\SuperSocket.ClientEngine.Core.0.9.0\lib\net45\SuperSocket.ClientEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SuperSocket.ProtoBase, Version=1.7.0.17, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
+      <HintPath>..\packages\SuperSocket.ProtoBase.1.7.0.17\lib\net45\SuperSocket.ProtoBase.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.SelfHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.SelfHost.5.2.3\lib\net45\System.Web.Http.SelfHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WebSocket4Net, Version=0.15.1.10, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebSocket4Net.0.15.1\lib\net45\WebSocket4Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Wpf.SplitButton, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bin\Wpf.SplitButton.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=2.9.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bin\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AI\WordSplitterNs\ChineseWordSplitter.cs" />
+    <Compile Include="AI\WordSplitterNs\ElementParser\ArabNumberParser.cs" />
+    <Compile Include="AI\WordSplitterNs\ElementParser\ChineseNumberParser.cs" />
+    <Compile Include="AI\WordSplitterNs\ElementParser\ChineseWordParser.cs" />
+    <Compile Include="AI\WordSplitterNs\ElementParser\EmailParser.cs" />
+    <Compile Include="AI\WordSplitterNs\ElementParser\EmojiParser.cs" />
+    <Compile Include="AI\WordSplitterNs\ElementParser\EnglishWordParser.cs" />
+    <Compile Include="AI\WordSplitterNs\ElementParser\GoodsUrlParser.cs" />
+    <Compile Include="AI\WordSplitterNs\ElementParser\IpParser.cs" />
+    <Compile Include="AI\WordSplitterNs\ElementParser\UrlParser.cs" />
+    <Compile Include="AI\WordSplitterNs\ElementParser\WordParser.cs" />
+    <Compile Include="AI\WordSplitterNs\LoginNewWordEventArgs.cs" />
+    <Compile Include="AI\WordSplitterNs\WordNs\ArabNumberWord.cs" />
+    <Compile Include="AI\WordSplitterNs\WordNs\ChineseNumberWord.cs" />
+    <Compile Include="AI\WordSplitterNs\WordNs\ChineseWord.cs" />
+    <Compile Include="AI\WordSplitterNs\WordNs\EMailWord.cs" />
+    <Compile Include="AI\WordSplitterNs\WordNs\EmojiWord.cs" />
+    <Compile Include="AI\WordSplitterNs\WordNs\EnglishWord.cs" />
+    <Compile Include="AI\WordSplitterNs\WordNs\GoodsUrl.cs" />
+    <Compile Include="AI\WordSplitterNs\WordNs\IAtomicTextWord.cs" />
+    <Compile Include="AI\WordSplitterNs\WordNs\IpAddressWord.cs" />
+    <Compile Include="AI\WordSplitterNs\WordNs\NumberWord.cs" />
+    <Compile Include="AI\WordSplitterNs\WordNs\Semantic.cs" />
+    <Compile Include="AI\WordSplitterNs\WordNs\TextWord.cs" />
+    <Compile Include="AI\WordSplitterNs\WordNs\UrlWord.cs" />
+    <Compile Include="AI\WordSplitterNs\WordSpliter.cs" />
+    <Compile Include="Asset\AssetImageEnum.cs" />
+    <Compile Include="Asset\AssetImageHelper.cs" />
+    <Compile Include="Asset\AssetXmlHelper.cs" />
+    <Compile Include="AssistWindow\NotifyIcon\CtlNotifyIcon.cs" />
+    <Compile Include="AssistWindow\NotifyIcon\MenuCreator\SellerMenuCreator.cs" />
+    <Compile Include="AssistWindow\NotifyIcon\WndNotifyIcon.xaml.cs">
+      <DependentUpon>WndNotifyIcon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssistWindow\NotifyIcon\WorkMode\AssistModeHelper.cs" />
+    <Compile Include="AssistWindow\NotifyIcon\WorkMode\WorkModeHelper.cs" />
+    <Compile Include="AssistWindow\Widget\BottomPanel.xaml.cs">
+      <DependentUpon>BottomPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssistWindow\Widget\Bottom\BuyerNote\BuyerNoteHelper.cs" />
+    <Compile Include="AssistWindow\Widget\Bottom\BuyerNote\CtlBuyerNoteViewer.xaml.cs">
+      <DependentUpon>CtlBuyerNoteViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssistWindow\Widget\Bottom\BuyerNote\CtlFavoriteNotes.xaml.cs">
+      <DependentUpon>CtlFavoriteNotes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssistWindow\Widget\Bottom\BuyerNote\WndBuyerNoteMgr.xaml.cs">
+      <DependentUpon>WndBuyerNoteMgr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssistWindow\Widget\Bottom\BuyerNote\WndDetail.xaml.cs">
+      <DependentUpon>WndDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssistWindow\Widget\Bottom\BuyerNote\WndFavoriteNoteEditor.xaml.cs">
+      <DependentUpon>WndFavoriteNoteEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssistWindow\Widget\Bottom\CtlAnswer.xaml.cs">
+      <DependentUpon>CtlAnswer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssistWindow\Widget\Bottom\CtlBuyer.xaml.cs">
+      <DependentUpon>CtlBuyer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssistWindow\Widget\Bottom\CtlBuyerMemo.xaml.cs">
+      <DependentUpon>CtlBuyerMemo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssistWindow\Widget\CtlImage.xaml.cs">
+      <DependentUpon>CtlImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssistWindow\Widget\IWakable.cs" />
+    <Compile Include="AssistWindow\Widget\RightPanel.xaml.cs">
+      <DependentUpon>RightPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssistWindow\Widget\Right\ShortcutImageHelper.cs" />
+    <Compile Include="AssistWindow\Widget\Right\ShortCut\CtlShortcut.xaml.cs">
+      <DependentUpon>CtlShortcut.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssistWindow\Widget\Right\ShortCut\CtlShortcutEntity.xaml.cs">
+      <DependentUpon>CtlShortcutEntity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssistWindow\Widget\Right\ShortCut\ShortcutHelper.cs" />
+    <Compile Include="AssistWindow\Widget\Right\ShortCut\ShortcutTreeviewController.cs" />
+    <Compile Include="AssistWindow\Widget\Right\ShortCut\WndShortcutEditor.xaml.cs">
+      <DependentUpon>WndShortcutEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssistWindow\Widget\Robot\CtlRobotQA.xaml.cs">
+      <DependentUpon>CtlRobotQA.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssistWindow\Widget\WebImageHelper.cs" />
+    <Compile Include="AssistWindow\WndAssist.xaml.cs">
+      <DependentUpon>WndAssist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Automation\ChatDeskNs\Automators\LoginedSeller.cs" />
+    <Compile Include="Automation\ChatDeskNs\Component\BuyerInfoWindowNameReader.cs" />
+    <Compile Include="Automation\ChatDeskNs\Component\ChatDeskContact.cs" />
+    <Compile Include="Automation\ChromeDebugger\BuyerEventArgs.cs" />
+    <Compile Include="Automation\ChromeDebugger\ChatRecordChromeV2.cs" />
+    <Compile Include="Automation\ChromeDebugger\ChromeDebugerCreator.cs" />
+    <Compile Include="Automation\ChromeDebugger\IChatRecordChrome.cs" />
+    <Compile Include="Automation\ChromeDebugger\Injector.cs" />
+    <Compile Include="Automation\KeyboardHook.cs" />
+    <Compile Include="Automation\NativeMethods.cs" />
+    <Compile Include="ChromeNs\BuyerSwitchedEventArgs.cs" />
+    <Compile Include="ChromeNs\ChatRecordChrome.cs" />
+    <Compile Include="ChromeNs\ChromeAdapterEventArgs.cs" />
+    <Compile Include="ChromeNs\ChromeConnector.cs" />
+    <Compile Include="ChromeNs\ChromeOperator.cs" />
+    <Compile Include="ChromeNs\HtmlChangedEventArgs.cs" />
+    <Compile Include="ChromeNs\RecieveNewMessageEventArgs.cs" />
+    <Compile Include="Common\Account\AccountHelper.cs" />
+    <Compile Include="Common\Commands.cs" />
+    <Compile Include="Common\CUtil.cs" />
+    <Compile Include="Common\DbHelper.cs" />
+    <Compile Include="Common\DbRecordChangedEventArgs.cs" />
+    <Compile Include="Common\Db\DbSyner.cs" />
+    <Compile Include="Common\Db\HybridHelper.cs" />
+    <Compile Include="Common\EmojiInputer\EmojiHelper.cs" />
+    <Compile Include="Common\EmojiInputer\EmojiInfo.cs" />
+    <Compile Include="Common\EmojiInputer\WndEmojiInputer.xaml.cs">
+      <DependentUpon>WndEmojiInputer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\EntityHelper.cs" />
+    <Compile Include="Common\MsgBox.cs" />
+    <Compile Include="Common\QnHelper.cs" />
+    <Compile Include="Common\TreeviewHelper\CtlCatalog.xaml.cs">
+      <DependentUpon>CtlCatalog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\TreeviewHelper\CtlLeaf.xaml.cs">
+      <DependentUpon>CtlLeaf.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\TreeviewHelper\CtlTreeView.xaml.cs">
+      <DependentUpon>CtlTreeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\TreeviewHelper\TreeDbAccessor.cs" />
+    <Compile Include="Common\TreeviewHelper\TreeViewController.cs" />
+    <Compile Include="Common\Trivial\CommonEventArgs.cs" />
+    <Compile Include="Common\Trivial\ItemScore.cs" />
+    <Compile Include="Common\Trivial\SynableImageHelper.cs" />
+    <Compile Include="Common\Windows\EtWindow.cs" />
+    <Compile Include="Common\Windows\WndInput.xaml.cs">
+      <DependentUpon>WndInput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Windows\WndMsgBox.xaml.cs">
+      <DependentUpon>WndMsgBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Windows\WndNotTipAgain.xaml.cs">
+      <DependentUpon>WndNotTipAgain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Windows\WndTrayTip.xaml.cs">
+      <DependentUpon>WndTrayTip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControllerNs\DeskScanner.cs" />
+    <Compile Include="Automation\ChatDeskNs\Automators\DeskAutomator.cs" />
+    <Compile Include="Automation\ChatDeskNs\Automators\DeskAutomators\DeskAutomatorV6_01_00N.cs" />
+    <Compile Include="Automation\ChatDeskNs\Automators\DeskAutomators\DeskAutomatorV6_02_00N.cs" />
+    <Compile Include="Automation\ChatDeskNs\Automators\DeskAutomators\DeskAutomatorV6_07_00N.cs" />
+    <Compile Include="Automation\ChatDeskNs\Automators\QnAccountFinder.cs" />
+    <Compile Include="Automation\ChatDeskNs\Automators\QnAccountFinderFactory.cs" />
+    <Compile Include="Automation\ChatDeskNs\BuyerChangedEventArgs.cs" />
+    <Compile Include="Automation\ChatDeskNs\ChatDesk.cs" />
+    <Compile Include="Automation\ChatDeskNs\ChatDeskAutomatorFactory.cs" />
+    <Compile Include="Automation\ChatDeskNs\ChatDeskEventArgs.cs" />
+    <Compile Include="Automation\ChatDeskNs\Component\TaskWindowBuyerNameReader.cs" />
+    <Compile Include="Automation\ChatDeskNs\DeskEditor.cs" />
+    <Compile Include="Automation\ChatDeskNs\InputSuggestion\DeskSuggestion.cs" />
+    <Compile Include="Automation\ChatDeskNs\Workbench.cs" />
+    <Compile Include="Automation\HwndInfo.cs" />
+    <Compile Include="Automation\WinApi.cs" />
+    <Compile Include="Automation\WinEventHooker.cs" />
+    <Compile Include="Help\HelpData.cs" />
+    <Compile Include="HttpSvr\MyHttpServer.cs" />
+    <Compile Include="Net\Api\BotApi.cs" />
+    <Compile Include="Options\CtlBuyerNoteOptions.xaml.cs">
+      <DependentUpon>CtlBuyerNoteOptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Options\CtlInputSugestionOptions.xaml.cs">
+      <DependentUpon>CtlInputSugestionOptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Options\CtlOtherOptions.xaml.cs">
+      <DependentUpon>CtlOtherOptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Options\CtlRobotOptions.xaml.cs">
+      <DependentUpon>CtlRobotOptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Options\CtlShortcutOptions.xaml.cs">
+      <DependentUpon>CtlShortcutOptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Options\CtlSuperAccountOptions.xaml.cs">
+      <DependentUpon>CtlSuperAccountOptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Options\HotKey\HotKeyHelper.cs" />
+    <Compile Include="Options\IOptions.cs" />
+    <Compile Include="Options\WndOption.xaml.cs">
+      <DependentUpon>WndOption.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Robot\Rule\Importer\Legacy\ForAllApp.cs" />
+    <Compile Include="Robot\Rule\Importer\Legacy\FullMatchRule.cs" />
+    <Compile Include="Robot\Rule\Importer\Legacy\KeyMatchRule.cs" />
+    <Compile Include="Robot\Rule\Parser\AddressSymbol.cs" />
+    <Compile Include="Robot\Rule\Parser\AnyLengthSymbol.cs" />
+    <Compile Include="Robot\Rule\Parser\FixLengthSymbol.cs" />
+    <Compile Include="Robot\Rule\Parser\LengthWildcardSymbol.cs" />
+    <Compile Include="Robot\Rule\Parser\NotLessThanLengthSymbol.cs" />
+    <Compile Include="Robot\Rule\Parser\NotMoreThanLengthSymbol.cs" />
+    <Compile Include="Robot\Rule\Parser\NumberSymbol.cs" />
+    <Compile Include="Robot\Rule\Parser\PlainTextSymbol.cs" />
+    <Compile Include="Robot\Rule\Parser\RangeLengthSymbol.cs" />
+    <Compile Include="Robot\Rule\Parser\SelectOneOrZeroSymbol.cs" />
+    <Compile Include="Robot\Rule\Parser\SelectOneSymbol.cs" />
+    <Compile Include="Robot\Rule\Parser\SelectorSymbol.cs" />
+    <Compile Include="Robot\Rule\Parser\Symbol.cs" />
+    <Compile Include="Robot\Rule\Parser\UrlSymbol.cs" />
+    <Compile Include="Robot\Rule\Parser\WildcardSymbol.cs" />
+    <Compile Include="Robot\Rule\QaCiteTableV2\CiteTableManagerV2.cs" />
+    <Compile Include="Robot\Rule\QaCiteTableV2\CiteTableV2.cs" />
+    <Compile Include="Robot\Rule\QaCiteTableV2\InputPromptString.cs" />
+    <Compile Include="Robot\Rule\QaCiteTableV2\InputPromptWordCiteData.cs" />
+    <Compile Include="Robot\Rule\QaCiteTableV2\InputSugestionHelper.cs" />
+    <Compile Include="Robot\Rule\QaCiteTableV2\WordCiteData.cs" />
+    <Compile Include="SingleStartUp\AppCloseEnder.cs" />
+    <Compile Include="SingleStartUp\AppLife.cs" />
+    <Compile Include="SingleStartUp\AppStartInitiator.cs" />
+    <Compile Include="SingleStartUp\Params.cs" />
+    <Compile Include="SingleStartUp\StartUp.cs" />
+    <Compile Include="Version\ClientUpdater.cs" />
+    <Compile Include="Version\InstalledVersionManager.cs" />
+    <Page Include="AssistWindow\NotifyIcon\WndNotifyIcon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AssistWindow\Widget\BottomPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AssistWindow\Widget\Bottom\BuyerNote\CtlBuyerNoteViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AssistWindow\Widget\Bottom\BuyerNote\CtlFavoriteNotes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AssistWindow\Widget\Bottom\BuyerNote\WndBuyerNoteMgr.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AssistWindow\Widget\Bottom\BuyerNote\WndDetail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AssistWindow\Widget\Bottom\BuyerNote\WndFavoriteNoteEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AssistWindow\Widget\Bottom\CtlAnswer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AssistWindow\Widget\Bottom\CtlBuyer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AssistWindow\Widget\Bottom\CtlBuyerMemo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AssistWindow\Widget\CtlImage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AssistWindow\Widget\RightPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AssistWindow\Widget\Right\ShortCut\CtlShortcut.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AssistWindow\Widget\Right\ShortCut\CtlShortcutEntity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AssistWindow\Widget\Right\ShortCut\WndShortcutEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AssistWindow\Widget\Robot\CtlRobotQA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AssistWindow\WndAssist.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\EmojiInputer\WndEmojiInputer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\TreeviewHelper\CtlCatalog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\TreeviewHelper\CtlLeaf.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\TreeviewHelper\CtlTreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\Windows\WndInput.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\Windows\WndMsgBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\Windows\WndNotTipAgain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\Windows\WndTrayTip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Options\CtlBuyerNoteOptions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Options\CtlInputSugestionOptions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Options\CtlOtherOptions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Options\CtlRobotOptions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Options\CtlShortcutOptions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Options\CtlSuperAccountOptions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Options\WndOption.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MasterDevs\ChromeDevTools\ChromeProcessFactory.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\ChromeSession.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\ChromeSessionExtensions.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\ChromeSessionFactory.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\ChromeSessionInfo.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Command.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\CommandAttribute.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\CommandFactory.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\CommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\CommandResponseAttribute.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\CommandResponseFactory.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\ErrorOrClosedEventArgs.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\ErrorResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Event.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\EventAttribute.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\EventFactory.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\EventHandler.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Extensions\JTokenExtensions.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Extensions\ObjectExtensions.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\IChromeProcess.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\IChromeProcessFactory.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\IChromeSession.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\IChromeSessionFactory.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\ICommandFactory.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\ICommandResponseFactory.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\IDirectoryCleaner.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\IEventFactory.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\IMethodNameAttribute.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\IMethodTypeMap.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\LocalChromeProcess.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\MethodTypeMap.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\ProtocolNameAttribute.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Accessibility\AXGlobalStates.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Accessibility\AXLiveRegionAttributes.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Accessibility\AXNode.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Accessibility\AXProperty.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Accessibility\AXRelatedNode.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Accessibility\AXRelationshipAttributes.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Accessibility\AXValue.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Accessibility\AXValueNativeSourceType.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Accessibility\AXValueSource.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Accessibility\AXValueSourceType.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Accessibility\AXValueType.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Accessibility\AXWidgetAttributes.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Accessibility\AXWidgetStates.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Accessibility\GetPartialAXTreeCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Accessibility\GetPartialAXTreeCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\Animation.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\AnimationCanceledEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\AnimationCreatedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\AnimationEffect.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\AnimationStartedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\DisableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\DisableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\EnableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\EnableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\GetCurrentTimeCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\GetCurrentTimeCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\GetPlaybackRateCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\GetPlaybackRateCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\KeyframesRule.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\KeyframeStyle.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\ReleaseAnimationsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\ReleaseAnimationsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\ResolveAnimationCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\ResolveAnimationCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\SeekAnimationsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\SeekAnimationsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\SetPausedCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\SetPausedCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\SetPlaybackRateCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\SetPlaybackRateCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\SetTimingCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Animation\SetTimingCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ApplicationCache\ApplicationCache.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ApplicationCache\ApplicationCacheResource.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ApplicationCache\ApplicationCacheStatusUpdatedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ApplicationCache\EnableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ApplicationCache\EnableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ApplicationCache\FrameWithManifest.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ApplicationCache\GetApplicationCacheForFrameCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ApplicationCache\GetApplicationCacheForFrameCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ApplicationCache\GetFramesWithManifestsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ApplicationCache\GetFramesWithManifestsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ApplicationCache\GetManifestForFrameCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ApplicationCache\GetManifestForFrameCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ApplicationCache\NetworkStateUpdatedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Audits\GetEncodedResponseCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Audits\GetEncodedResponseCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Browser\Bounds.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Browser\GetVersionCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Browser\GetVersionCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Browser\GetWindowBoundsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Browser\GetWindowBoundsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Browser\GetWindowForTargetCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Browser\GetWindowForTargetCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Browser\SetWindowBoundsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Browser\SetWindowBoundsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Browser\WindowState.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CacheStorage\Cache.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CacheStorage\CachedResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CacheStorage\DataEntry.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CacheStorage\DeleteCacheCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CacheStorage\DeleteCacheCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CacheStorage\DeleteEntryCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CacheStorage\DeleteEntryCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CacheStorage\Header.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CacheStorage\RequestCachedResponseCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CacheStorage\RequestCachedResponseCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CacheStorage\RequestCacheNamesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CacheStorage\RequestCacheNamesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CacheStorage\RequestEntriesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CacheStorage\RequestEntriesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Console\ClearMessagesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Console\ClearMessagesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Console\ConsoleMessage.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Console\DisableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Console\DisableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Console\EnableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Console\EnableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Console\MessageAddedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\AddRuleCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\AddRuleCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\CollectClassNamesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\CollectClassNamesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\CreateStyleSheetCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\CreateStyleSheetCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\CSSComputedStyleProperty.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\CSSKeyframeRule.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\CSSKeyframesRule.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\CSSMedia.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\CSSProperty.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\CSSRule.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\CSSStyle.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\CSSStyleSheetHeader.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\DisableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\DisableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\EnableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\EnableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\FontsUpdatedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\ForcePseudoStateCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\ForcePseudoStateCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\GetBackgroundColorsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\GetBackgroundColorsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\GetComputedStyleForNodeCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\GetComputedStyleForNodeCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\GetInlineStylesForNodeCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\GetInlineStylesForNodeCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\GetMatchedStylesForNodeCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\GetMatchedStylesForNodeCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\GetMediaQueriesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\GetMediaQueriesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\GetPlatformFontsForNodeCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\GetPlatformFontsForNodeCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\GetStyleSheetTextCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\GetStyleSheetTextCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\InheritedStyleEntry.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\InlineTextBox.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\MediaQuery.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\MediaQueryExpression.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\MediaQueryResultChangedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\PlatformFontUsage.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\PseudoElementMatches.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\RuleMatch.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\RuleUsage.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\SelectorList.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\SetEffectivePropertyValueForNodeCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\SetEffectivePropertyValueForNodeCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\SetKeyframeKeyCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\SetKeyframeKeyCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\SetMediaTextCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\SetMediaTextCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\SetRuleSelectorCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\SetRuleSelectorCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\SetStyleSheetTextCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\SetStyleSheetTextCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\SetStyleTextsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\SetStyleTextsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\ShorthandEntry.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\SourceRange.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\StartRuleUsageTrackingCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\StartRuleUsageTrackingCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\StopRuleUsageTrackingCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\StopRuleUsageTrackingCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\StyleDeclarationEdit.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\StyleSheetAddedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\StyleSheetChangedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\StyleSheetOrigin.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\StyleSheetRemovedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\TakeCoverageDeltaCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\TakeCoverageDeltaCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\CSS\Value.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Database\AddDatabaseEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Database\Database.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Database\DisableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Database\DisableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Database\EnableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Database\EnableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Database\Error.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Database\ExecuteSQLCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Database\ExecuteSQLCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Database\GetDatabaseTableNamesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Database\GetDatabaseTableNamesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\BreakLocation.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\BreakpointResolvedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\CallFrame.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\ContinueToLocationCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\ContinueToLocationCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\DisableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\DisableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\EnableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\EnableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\EvaluateOnCallFrameCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\EvaluateOnCallFrameCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\GetPossibleBreakpointsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\GetPossibleBreakpointsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\GetScriptSourceCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\GetScriptSourceCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\Location.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\PauseCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\PauseCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\PausedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\RemoveBreakpointCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\RemoveBreakpointCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\RestartFrameCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\RestartFrameCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\ResumeCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\ResumeCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\ResumedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\ScheduleStepIntoAsyncCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\ScheduleStepIntoAsyncCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\Scope.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\ScriptFailedToParseEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\ScriptParsedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\ScriptPosition.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SearchInContentCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SearchInContentCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SearchMatch.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SetAsyncCallStackDepthCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SetAsyncCallStackDepthCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SetBlackboxedRangesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SetBlackboxedRangesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SetBlackboxPatternsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SetBlackboxPatternsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SetBreakpointByUrlCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SetBreakpointByUrlCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SetBreakpointCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SetBreakpointCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SetBreakpointsActiveCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SetBreakpointsActiveCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SetPauseOnExceptionsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SetPauseOnExceptionsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SetScriptSourceCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SetScriptSourceCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SetSkipAllPausesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SetSkipAllPausesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SetVariableValueCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\SetVariableValueCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\StepIntoCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\StepIntoCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\StepOutCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\StepOutCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\StepOverCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Debugger\StepOverCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DeviceOrientation\ClearDeviceOrientationOverrideCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DeviceOrientation\ClearDeviceOrientationOverrideCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DeviceOrientation\SetDeviceOrientationOverrideCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DeviceOrientation\SetDeviceOrientationOverrideCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMDebugger\DOMBreakpointType.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMDebugger\EventListener.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMDebugger\GetEventListenersCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMDebugger\GetEventListenersCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMDebugger\RemoveDOMBreakpointCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMDebugger\RemoveDOMBreakpointCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMDebugger\RemoveEventListenerBreakpointCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMDebugger\RemoveEventListenerBreakpointCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMDebugger\RemoveInstrumentationBreakpointCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMDebugger\RemoveInstrumentationBreakpointCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMDebugger\RemoveXHRBreakpointCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMDebugger\RemoveXHRBreakpointCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMDebugger\SetDOMBreakpointCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMDebugger\SetDOMBreakpointCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMDebugger\SetEventListenerBreakpointCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMDebugger\SetEventListenerBreakpointCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMDebugger\SetInstrumentationBreakpointCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMDebugger\SetInstrumentationBreakpointCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMDebugger\SetXHRBreakpointCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMDebugger\SetXHRBreakpointCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMSnapshot\ComputedStyle.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMSnapshot\DOMNode.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMSnapshot\GetSnapshotCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMSnapshot\GetSnapshotCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMSnapshot\LayoutTreeNode.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMSnapshot\NameValue.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMStorage\ClearCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMStorage\ClearCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMStorage\DisableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMStorage\DisableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMStorage\DomStorageItemAddedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMStorage\DomStorageItemRemovedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMStorage\DomStorageItemsClearedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMStorage\DomStorageItemUpdatedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMStorage\EnableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMStorage\EnableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMStorage\GetDOMStorageItemsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMStorage\GetDOMStorageItemsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMStorage\RemoveDOMStorageItemCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMStorage\RemoveDOMStorageItemCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMStorage\SetDOMStorageItemCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMStorage\SetDOMStorageItemCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOMStorage\StorageId.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\AttributeModifiedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\AttributeRemovedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\BackendNode.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\BoxModel.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\CharacterDataModifiedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\ChildNodeCountUpdatedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\ChildNodeInsertedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\ChildNodeRemovedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\CollectClassNamesFromSubtreeCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\CollectClassNamesFromSubtreeCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\CopyToCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\CopyToCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\DescribeNodeCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\DescribeNodeCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\DisableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\DisableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\DiscardSearchResultsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\DiscardSearchResultsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\DistributedNodesUpdatedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\DocumentUpdatedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\EnableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\EnableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\FocusCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\FocusCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\GetAttributesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\GetAttributesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\GetBoxModelCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\GetBoxModelCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\GetDocumentCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\GetDocumentCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\GetFlattenedDocumentCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\GetFlattenedDocumentCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\GetNodeForLocationCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\GetNodeForLocationCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\GetOuterHTMLCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\GetOuterHTMLCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\GetRelayoutBoundaryCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\GetRelayoutBoundaryCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\GetSearchResultsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\GetSearchResultsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\HideHighlightCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\HideHighlightCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\HighlightNodeCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\HighlightNodeCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\HighlightRectCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\HighlightRectCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\InlineStyleInvalidatedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\MarkUndoableStateCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\MarkUndoableStateCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\MoveToCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\MoveToCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\Node.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\PerformSearchCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\PerformSearchCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\PseudoElementAddedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\PseudoElementRemovedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\PseudoType.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\PushNodeByPathToFrontendCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\PushNodeByPathToFrontendCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\PushNodesByBackendIdsToFrontendCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\PushNodesByBackendIdsToFrontendCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\QuerySelectorAllCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\QuerySelectorAllCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\QuerySelectorCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\QuerySelectorCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\Rect.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\RedoCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\RedoCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\RemoveAttributeCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\RemoveAttributeCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\RemoveNodeCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\RemoveNodeCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\RequestChildNodesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\RequestChildNodesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\RequestNodeCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\RequestNodeCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\ResolveNodeCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\ResolveNodeCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\RGBA.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\SetAttributesAsTextCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\SetAttributesAsTextCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\SetAttributeValueCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\SetAttributeValueCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\SetChildNodesEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\SetFileInputFilesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\SetFileInputFilesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\SetInspectedNodeCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\SetInspectedNodeCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\SetNodeNameCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\SetNodeNameCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\SetNodeValueCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\SetNodeValueCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\SetOuterHTMLCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\SetOuterHTMLCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\ShadowRootPoppedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\ShadowRootPushedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\ShadowRootType.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\ShapeOutsideInfo.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\UndoCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\DOM\UndoCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\CanEmulateCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\CanEmulateCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\ClearDeviceMetricsOverrideCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\ClearDeviceMetricsOverrideCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\ClearGeolocationOverrideCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\ClearGeolocationOverrideCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\ResetPageScaleFactorCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\ResetPageScaleFactorCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\ScreenOrientation.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\SetCPUThrottlingRateCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\SetCPUThrottlingRateCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\SetDefaultBackgroundColorOverrideCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\SetDefaultBackgroundColorOverrideCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\SetDeviceMetricsOverrideCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\SetDeviceMetricsOverrideCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\SetEmitTouchEventsForMouseCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\SetEmitTouchEventsForMouseCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\SetEmulatedMediaCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\SetEmulatedMediaCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\SetGeolocationOverrideCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\SetGeolocationOverrideCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\SetPageScaleFactorCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\SetPageScaleFactorCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\SetScriptExecutionDisabledCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\SetScriptExecutionDisabledCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\SetTouchEmulationEnabledCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\SetTouchEmulationEnabledCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\SetVirtualTimePolicyCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\SetVirtualTimePolicyCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\SetVisibleSizeCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\SetVisibleSizeCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\VirtualTimeBudgetExpiredEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\VirtualTimePausedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Emulation\VirtualTimePolicy.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\AddHeapSnapshotChunkEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\AddInspectedHeapObjectCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\AddInspectedHeapObjectCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\CollectGarbageCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\CollectGarbageCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\DisableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\DisableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\EnableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\EnableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\GetHeapObjectIdCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\GetHeapObjectIdCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\GetObjectByHeapObjectIdCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\GetObjectByHeapObjectIdCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\HeapStatsUpdateEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\LastSeenObjectIdEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\ReportHeapSnapshotProgressEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\ResetProfilesEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\SamplingHeapProfile.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\SamplingHeapProfileNode.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\StartSamplingCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\StartSamplingCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\StartTrackingHeapObjectsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\StartTrackingHeapObjectsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\StopSamplingCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\StopSamplingCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\StopTrackingHeapObjectsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\StopTrackingHeapObjectsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\TakeHeapSnapshotCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\HeapProfiler\TakeHeapSnapshotCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IndexedDB\ClearObjectStoreCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IndexedDB\ClearObjectStoreCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IndexedDB\DatabaseWithObjectStores.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IndexedDB\DataEntry.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IndexedDB\DeleteDatabaseCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IndexedDB\DeleteDatabaseCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IndexedDB\DisableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IndexedDB\DisableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IndexedDB\EnableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IndexedDB\EnableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IndexedDB\Key.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IndexedDB\KeyPath.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IndexedDB\KeyRange.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IndexedDB\ObjectStore.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IndexedDB\ObjectStoreIndex.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IndexedDB\RequestDatabaseCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IndexedDB\RequestDatabaseCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IndexedDB\RequestDatabaseNamesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IndexedDB\RequestDatabaseNamesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IndexedDB\RequestDataCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IndexedDB\RequestDataCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Input\DispatchKeyEventCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Input\DispatchKeyEventCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Input\DispatchMouseEventCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Input\DispatchMouseEventCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Input\DispatchTouchEventCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Input\DispatchTouchEventCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Input\EmulateTouchFromMouseEventCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Input\EmulateTouchFromMouseEventCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Input\GestureSourceType.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Input\SetIgnoreInputEventsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Input\SetIgnoreInputEventsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Input\SynthesizePinchGestureCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Input\SynthesizePinchGestureCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Input\SynthesizeScrollGestureCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Input\SynthesizeScrollGestureCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Input\SynthesizeTapGestureCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Input\SynthesizeTapGestureCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Input\TouchPoint.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Inspector\DetachedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Inspector\DisableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Inspector\DisableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Inspector\EnableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Inspector\EnableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Inspector\TargetCrashedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IO\CloseCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IO\CloseCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IO\ReadCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IO\ReadCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IO\ResolveBlobCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\IO\ResolveBlobCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\CompositingReasonsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\CompositingReasonsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\DisableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\DisableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\EnableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\EnableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\Layer.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\LayerPaintedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\LayerTreeDidChangeEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\LoadSnapshotCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\LoadSnapshotCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\MakeSnapshotCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\MakeSnapshotCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\PictureTile.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\ProfileSnapshotCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\ProfileSnapshotCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\ReleaseSnapshotCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\ReleaseSnapshotCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\ReplaySnapshotCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\ReplaySnapshotCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\ScrollRect.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\SnapshotCommandLogCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\SnapshotCommandLogCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\LayerTree\StickyPositionConstraint.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Log\ClearCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Log\ClearCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Log\DisableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Log\DisableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Log\EnableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Log\EnableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Log\EntryAddedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Log\LogEntry.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Log\StartViolationsReportCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Log\StartViolationsReportCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Log\StopViolationsReportCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Log\StopViolationsReportCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Log\ViolationSetting.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Memory\GetDOMCountersCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Memory\GetDOMCountersCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Memory\PrepareForLeakDetectionCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Memory\PrepareForLeakDetectionCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Memory\PressureLevel.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Memory\SetPressureNotificationsSuppressedCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Memory\SetPressureNotificationsSuppressedCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Memory\SimulatePressureNotificationCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Memory\SimulatePressureNotificationCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\AuthChallenge.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\AuthChallengeResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\BlockedReason.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\CachedResource.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\CanClearBrowserCacheCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\CanClearBrowserCacheCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\CanClearBrowserCookiesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\CanClearBrowserCookiesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\CanEmulateNetworkConditionsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\CanEmulateNetworkConditionsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\ClearBrowserCacheCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\ClearBrowserCacheCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\ClearBrowserCookiesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\ClearBrowserCookiesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\ConnectionType.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\ContinueInterceptedRequestCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\ContinueInterceptedRequestCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\Cookie.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\CookieParam.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\CookieSameSite.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\DataReceivedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\DeleteCookiesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\DeleteCookiesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\DisableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\DisableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\EmulateNetworkConditionsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\EmulateNetworkConditionsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\EnableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\EnableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\ErrorReason.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\EventSourceMessageReceivedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\GetAllCookiesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\GetAllCookiesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\GetCertificateCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\GetCertificateCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\GetCookiesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\GetCookiesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\GetResponseBodyCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\GetResponseBodyCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\Headers.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\Initiator.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\LoadingFailedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\LoadingFinishedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\ReplayXHRCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\ReplayXHRCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\Request.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\RequestInterceptedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\RequestServedFromCacheEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\RequestWillBeSentEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\ResourceChangedPriorityEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\ResourcePriority.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\ResourceTiming.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\Response.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\ResponseReceivedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\SecurityDetails.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\SetBlockedURLsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\SetBlockedURLsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\SetBypassServiceWorkerCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\SetBypassServiceWorkerCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\SetCacheDisabledCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\SetCacheDisabledCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\SetCookieCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\SetCookieCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\SetCookiesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\SetCookiesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\SetDataSizeLimitsForTestCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\SetDataSizeLimitsForTestCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\SetExtraHTTPHeadersCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\SetExtraHTTPHeadersCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\SetRequestInterceptionEnabledCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\SetRequestInterceptionEnabledCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\SetUserAgentOverrideCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\SetUserAgentOverrideCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\SignedCertificateTimestamp.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\WebSocketClosedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\WebSocketCreatedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\WebSocketFrame.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\WebSocketFrameErrorEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\WebSocketFrameReceivedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\WebSocketFrameSentEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\WebSocketHandshakeResponseReceivedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\WebSocketRequest.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\WebSocketResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Network\WebSocketWillSendHandshakeRequestEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\DisableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\DisableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\EnableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\EnableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\GetHighlightObjectForTestCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\GetHighlightObjectForTestCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\HideHighlightCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\HideHighlightCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\HighlightConfig.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\HighlightFrameCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\HighlightFrameCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\HighlightNodeCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\HighlightNodeCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\HighlightQuadCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\HighlightQuadCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\HighlightRectCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\HighlightRectCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\InspectMode.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\InspectNodeRequestedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\NodeHighlightRequestedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\ScreenshotRequestedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\SetInspectModeCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\SetInspectModeCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\SetPausedInDebuggerMessageCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\SetPausedInDebuggerMessageCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\SetShowDebugBordersCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\SetShowDebugBordersCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\SetShowFPSCounterCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\SetShowFPSCounterCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\SetShowPaintRectsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\SetShowPaintRectsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\SetShowScrollBottleneckRectsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\SetShowScrollBottleneckRectsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\SetShowViewportSizeOnResizeCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\SetShowViewportSizeOnResizeCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\SetSuspendedCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Overlay\SetSuspendedCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\AddScriptToEvaluateOnLoadCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\AddScriptToEvaluateOnLoadCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\AddScriptToEvaluateOnNewDocumentCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\AddScriptToEvaluateOnNewDocumentCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\AppManifestError.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\BringToFrontCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\BringToFrontCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\CaptureScreenshotCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\CaptureScreenshotCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\ClearDeviceMetricsOverrideCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\ClearDeviceMetricsOverrideCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\ClearDeviceOrientationOverrideCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\ClearDeviceOrientationOverrideCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\ClearGeolocationOverrideCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\ClearGeolocationOverrideCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\CreateIsolatedWorldCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\CreateIsolatedWorldCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\DeleteCookieCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\DeleteCookieCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\DialogType.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\DisableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\DisableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\DomContentEventFiredEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\EnableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\EnableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\Frame.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\FrameAttachedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\FrameClearedScheduledNavigationEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\FrameDetachedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\FrameNavigatedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\FrameResizedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\FrameResource.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\FrameResourceTree.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\FrameScheduledNavigationEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\FrameStartedLoadingEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\FrameStoppedLoadingEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\GetAppManifestCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\GetAppManifestCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\GetCookiesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\GetCookiesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\GetLayoutMetricsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\GetLayoutMetricsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\GetNavigationHistoryCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\GetNavigationHistoryCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\GetResourceContentCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\GetResourceContentCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\GetResourceTreeCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\GetResourceTreeCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\HandleJavaScriptDialogCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\HandleJavaScriptDialogCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\InterstitialHiddenEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\InterstitialShownEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\JavascriptDialogClosedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\JavascriptDialogOpeningEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\LayoutViewport.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\LifecycleEventEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\LoadEventFiredEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\NavigateCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\NavigateCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\NavigateToHistoryEntryCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\NavigateToHistoryEntryCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\NavigationEntry.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\NavigationResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\PrintToPDFCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\PrintToPDFCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\ReloadCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\ReloadCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\RemoveScriptToEvaluateOnLoadCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\RemoveScriptToEvaluateOnLoadCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\RemoveScriptToEvaluateOnNewDocumentCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\RemoveScriptToEvaluateOnNewDocumentCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\RequestAppBannerCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\RequestAppBannerCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\ResourceType.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\ScreencastFrameAckCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\ScreencastFrameAckCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\ScreencastFrameEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\ScreencastFrameMetadata.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\ScreencastVisibilityChangedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\SearchInResourceCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\SearchInResourceCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\SetAdBlockingEnabledCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\SetAdBlockingEnabledCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\SetAutoAttachToCreatedPagesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\SetAutoAttachToCreatedPagesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\SetDeviceMetricsOverrideCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\SetDeviceMetricsOverrideCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\SetDeviceOrientationOverrideCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\SetDeviceOrientationOverrideCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\SetDocumentContentCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\SetDocumentContentCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\SetDownloadBehaviorCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\SetDownloadBehaviorCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\SetGeolocationOverrideCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\SetGeolocationOverrideCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\SetTouchEmulationEnabledCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\SetTouchEmulationEnabledCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\StartScreencastCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\StartScreencastCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\StopLoadingCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\StopLoadingCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\StopScreencastCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\StopScreencastCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\TransitionType.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\Viewport.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Page\VisualViewport.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Performance\DisableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Performance\DisableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Performance\EnableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Performance\EnableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Performance\GetMetricsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Performance\GetMetricsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Performance\Metric.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Performance\MetricsEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\ConsoleProfileFinishedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\ConsoleProfileStartedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\CoverageRange.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\DisableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\DisableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\EnableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\EnableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\FunctionCoverage.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\GetBestEffortCoverageCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\GetBestEffortCoverageCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\PositionTickInfo.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\Profile.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\ProfileNode.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\ScriptCoverage.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\SetSamplingIntervalCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\SetSamplingIntervalCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\StartCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\StartCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\StartPreciseCoverageCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\StartPreciseCoverageCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\StopCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\StopCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\StopPreciseCoverageCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\StopPreciseCoverageCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\TakePreciseCoverageCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Profiler\TakePreciseCoverageCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ProtocolName.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\AwaitPromiseCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\AwaitPromiseCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\CallArgument.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\CallFrame.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\CallFunctionOnCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\CallFunctionOnCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\CompileScriptCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\CompileScriptCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\ConsoleAPICalledEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\CustomPreview.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\DisableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\DisableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\DiscardConsoleEntriesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\DiscardConsoleEntriesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\EnableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\EnableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\EntryPreview.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\EvaluateCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\EvaluateCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\ExceptionDetails.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\ExceptionRevokedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\ExceptionThrownEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\ExecutionContextCreatedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\ExecutionContextDescription.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\ExecutionContextDestroyedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\ExecutionContextsClearedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\GetPropertiesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\GetPropertiesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\InspectRequestedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\InternalPropertyDescriptor.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\ObjectPreview.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\PropertyDescriptor.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\PropertyPreview.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\QueryObjectsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\QueryObjectsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\ReleaseObjectCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\ReleaseObjectCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\ReleaseObjectGroupCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\ReleaseObjectGroupCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\RemoteObject.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\RunIfWaitingForDebuggerCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\RunIfWaitingForDebuggerCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\RunScriptCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\RunScriptCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\SetCustomObjectFormatterEnabledCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\SetCustomObjectFormatterEnabledCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\StackTrace.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Runtime\UnserializableValue.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Schema\Domain.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Schema\GetDomainsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Schema\GetDomainsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Security\CertificateErrorAction.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Security\CertificateErrorEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Security\DisableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Security\DisableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Security\EnableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Security\EnableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Security\HandleCertificateErrorCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Security\HandleCertificateErrorCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Security\InsecureContentStatus.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Security\MixedContentType.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Security\SecurityState.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Security\SecurityStateChangedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Security\SecurityStateExplanation.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Security\SetOverrideCertificateErrorsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Security\SetOverrideCertificateErrorsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\DeliverPushMessageCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\DeliverPushMessageCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\DisableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\DisableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\DispatchSyncEventCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\DispatchSyncEventCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\EnableCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\EnableCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\InspectWorkerCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\InspectWorkerCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\ServiceWorkerErrorMessage.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\ServiceWorkerRegistration.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\ServiceWorkerVersion.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\ServiceWorkerVersionRunningStatus.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\ServiceWorkerVersionStatus.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\SetForceUpdateOnPageLoadCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\SetForceUpdateOnPageLoadCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\SkipWaitingCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\SkipWaitingCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\StartWorkerCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\StartWorkerCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\StopWorkerCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\StopWorkerCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\UnregisterCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\UnregisterCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\UpdateRegistrationCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\UpdateRegistrationCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\WorkerErrorReportedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\WorkerRegistrationUpdatedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\ServiceWorker\WorkerVersionUpdatedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Storage\CacheStorageContentUpdatedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Storage\CacheStorageListUpdatedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Storage\ClearDataForOriginCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Storage\ClearDataForOriginCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Storage\GetUsageAndQuotaCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Storage\GetUsageAndQuotaCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Storage\StorageType.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Storage\TrackCacheStorageForOriginCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Storage\TrackCacheStorageForOriginCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Storage\UntrackCacheStorageForOriginCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Storage\UntrackCacheStorageForOriginCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Storage\UsageForType.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\SystemInfo\GetInfoCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\SystemInfo\GetInfoCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\SystemInfo\GPUDevice.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\SystemInfo\GPUInfo.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\ActivateTargetCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\ActivateTargetCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\AttachedToTargetEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\AttachToTargetCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\AttachToTargetCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\CloseTargetCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\CloseTargetCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\CreateBrowserContextCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\CreateBrowserContextCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\CreateTargetCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\CreateTargetCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\DetachedFromTargetEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\DetachFromTargetCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\DetachFromTargetCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\DisposeBrowserContextCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\DisposeBrowserContextCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\GetTargetInfoCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\GetTargetInfoCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\GetTargetsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\GetTargetsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\ReceivedMessageFromTargetEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\RemoteLocation.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\SendMessageToTargetCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\SendMessageToTargetCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\SetAttachToFramesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\SetAttachToFramesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\SetAutoAttachCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\SetAutoAttachCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\SetDiscoverTargetsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\SetDiscoverTargetsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\SetRemoteLocationsCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\SetRemoteLocationsCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\TargetCreatedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\TargetDestroyedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\TargetInfo.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Target\TargetInfoChangedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Tethering\AcceptedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Tethering\BindCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Tethering\BindCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Tethering\UnbindCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Tethering\UnbindCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Tracing\BufferUsageEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Tracing\DataCollectedEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Tracing\EndCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Tracing\EndCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Tracing\GetCategoriesCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Tracing\GetCategoriesCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Tracing\MemoryDumpConfig.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Tracing\RecordClockSyncMarkerCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Tracing\RecordClockSyncMarkerCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Tracing\RequestMemoryDumpCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Tracing\RequestMemoryDumpCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Tracing\StartCommand.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Tracing\StartCommandResponse.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Tracing\TraceConfig.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Protocol\Chrome\Tracing\TracingCompleteEvent.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\RemoteChromeProcess.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\Serialization\MessageContractResolver.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\StubbornDirectoryCleaner.cs" />
+    <Compile Include="MasterDevs\ChromeDevTools\SupportedByAttribute.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\image\blue.ico" />
+    <Resource Include="Asset\image\clear.png" />
+    <Resource Include="Asset\image\close20.png" />
+    <Resource Include="Asset\image\cod_16.gif" />
+    <Resource Include="Asset\image\emoji_all.png" />
+    <Resource Include="Asset\image\error_gray_16.png" />
+    <Resource Include="Asset\image\error_red_16.png" />
+    <Resource Include="Asset\image\face_24.png" />
+    <Resource Include="Asset\image\flag0.png" />
+    <Resource Include="Asset\image\flag1.png" />
+    <Resource Include="Asset\image\flag2.png" />
+    <Resource Include="Asset\image\flag3.png" />
+    <Resource Include="Asset\image\flag4.png" />
+    <Resource Include="Asset\image\flag5.png" />
+    <Resource Include="Asset\image\folder_close_16.png" />
+    <Resource Include="Asset\image\folder_open_16.png" />
+    <Resource Include="Asset\image\gray.ico" />
+    <Resource Include="Asset\image\home_16.gif" />
+    <Resource Include="Asset\image\img_20.png" />
+    <Resource Include="Asset\image\jhs_16.gif" />
+    <Resource Include="Asset\image\loading.gif" />
+    <Resource Include="Asset\image\mail_20.png" />
+    <Resource Include="Asset\image\noimage.jpg" />
+    <Resource Include="Asset\image\notepad_16.png" />
+    <Resource Include="Asset\image\option.png" />
+    <Resource Include="Asset\image\rate_20.png" />
+    <Resource Include="Asset\image\red.ico" />
+    <Resource Include="Asset\image\refresh.png" />
+    <Resource Include="Asset\image\right_arrow16.gif" />
+    <Resource Include="Asset\image\splash.gif" />
+    <Resource Include="Asset\image\wangwang_16.png" />
+    <Resource Include="Asset\image\yellow.ico" />
+    <Resource Include="Asset\xml\defaultsynonym.xml" />
+    <Resource Include="Asset\xml\metasynonym.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BotLib\BotLib.csproj">
+      <Project>{ee3d2c1a-1a43-4446-a169-27d8e860e2c3}</Project>
+      <Name>BotLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DbEntity\DbEntity.csproj">
+      <Project>{8ff347e0-6e56-4e63-bc8b-d840c41e0f02}</Project>
+      <Name>DbEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

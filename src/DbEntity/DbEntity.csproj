@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8FF347E0-6E56-4E63-BC8B-D840C41E0F02}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DbEntity</RootNamespace>
+    <AssemblyName>DbEntity</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountEntity.cs" />
+    <Compile Include="ApiNameEnum.cs" />
+    <Compile Include="Entity\BuyerNote\BuyerNoteEntity.cs" />
+    <Compile Include="DbAccountTypeEnum.cs" />
+    <Compile Include="EntityBase.cs" />
+    <Compile Include="Entity\AnswerWithImage.cs" />
+    <Compile Include="Entity\Api\ClientStartUploadEntity.cs" />
+    <Compile Include="Entity\Api\DownRootIdUploadEntity.cs" />
+    <Compile Include="Entity\Api\LoginAccount\LoginAccountUploadEntity.cs" />
+    <Compile Include="Entity\Api\LoginAccount\LoginAccountUploadNickInfo.cs" />
+    <Compile Include="Entity\Api\ModifyPubDbAccountDownloadEntity.cs" />
+    <Compile Include="Entity\Api\ModifyPubDbAccountUploadEntity.cs" />
+    <Compile Include="Entity\Api\RootTypeEnum.cs" />
+    <Compile Include="Entity\CallCountEntity.cs" />
+    <Compile Include="Entity\Core\TreeCatalog.cs" />
+    <Compile Include="Entity\DownloadEntity.cs" />
+    <Compile Include="Entity\DownloadNickInfo.cs" />
+    <Compile Include="Entity\DownloadShopInfo.cs" />
+    <Compile Include="Entity\DownloadState.cs" />
+    <Compile Include="Entity\LoginDownloadEntity.cs" />
+    <Compile Include="Entity\LoginUploadEntity.cs" />
+    <Compile Include="Entity\SskDownloadEntity.cs" />
+    <Compile Include="Entity\SynDownloadEntity.cs" />
+    <Compile Include="Entity\SynUploadEntity.cs" />
+    <Compile Include="Entity\Syn\CheckOccasionEnum.cs" />
+    <Compile Include="Entity\Syn\SynCheckDownloadEntity.cs" />
+    <Compile Include="Entity\Syn\SynCheckUploadEntity.cs" />
+    <Compile Include="Entity\TbNickEntity.cs" />
+    <Compile Include="Entity\TimestampEntity.cs" />
+    <Compile Include="Entity\TransferFileOpTypeEnum.cs" />
+    <Compile Include="Entity\TransferFileParamsEntity.cs" />
+    <Compile Include="Entity\TransferFileTypeEnum.cs" />
+    <Compile Include="Entity\UpdateDownloadEntity.cs" />
+    <Compile Include="Entity\UpdateUploadEntity.cs" />
+    <Compile Include="Entity\UploadEntity.cs" />
+    <Compile Include="Entity\UploadNickInfo.cs" />
+    <Compile Include="Entity\WorkModeEnum.cs" />
+    <Compile Include="Entity\WorkModeUploadActionEnum.cs" />
+    <Compile Include="Entity\WorkModeUploadEntity.cs" />
+    <Compile Include="Entity\BuyerNote\FavoriteNoteEntity.cs" />
+    <Compile Include="GoodsKnowledgeEntity.cs" />
+    <Compile Include="GoodsWeightEntity.cs" />
+    <Compile Include="HybridEntity.cs" />
+    <Compile Include="HybridKey.cs" />
+    <Compile Include="OptionEntity.cs" />
+    <Compile Include="ShareParams.cs" />
+    <Compile Include="ShareUtil.cs" />
+    <Compile Include="ShortcutCatalogEntity.cs" />
+    <Compile Include="ShortcutEntity.cs" />
+    <Compile Include="TbNickHelper.cs" />
+    <Compile Include="TreeNode.cs" />
+    <Compile Include="UniformedString.cs" />
+    <Compile Include="WorkModeDownloadEntity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BotLib\BotLib.csproj">
+      <Project>{ee3d2c1a-1a43-4446-a169-27d8e860e2c3}</Project>
+      <Name>BotLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

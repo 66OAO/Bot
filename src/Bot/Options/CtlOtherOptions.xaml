@@ -1,0 +1,31 @@
+<UserControl
+	x:Class="Bot.Options.CtlOtherOptions" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:Bot.Options">
+	<StackPanel
+		Margin="15">
+		<GroupBox
+			Header="程序字体大小"
+			Padding="5">
+			<StackPanel
+				Orientation="Horizontal">
+				<RadioButton
+					Name="rbtDefault">默认（推荐）</RadioButton>
+				<RadioButton
+					Name="rbtBigger"
+					Margin="10 0">加大</RadioButton>
+				<RadioButton
+					Name="rbtBigist">特大</RadioButton>
+			</StackPanel>
+		</GroupBox>
+		<CheckBox
+			Name="cboxIme"
+			Margin="10">强制激活输入法（建议）</CheckBox>
+		<Button
+			Margin="10 20"
+			Click="btnRestore_Click">让所有设为“不再显示”的对话框，再次显示</Button>
+	</StackPanel>
+</UserControl>

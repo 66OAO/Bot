@@ -1,0 +1,35 @@
+<UserControl
+	x:Class="Bot.Options.CtlInputSugestionOptions" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:Bot.Options">
+	<StackPanel>
+		<GroupBox
+			Header="输入联想：引用的词条（在千牛输入时，软件【下面板】出现的词条的来源）"
+			Margin="15"
+			Padding="15">
+			<StackPanel>
+				<RadioButton
+					Name="rbtShortcut">【话术】</RadioButton>
+				<RadioButton
+					Name="rbtShortcutAndRuleAnswer"
+					Margin="0 5">【话术】+【机器人回复规则的答案】</RadioButton>
+				<RadioButton
+					Name="rbtAll">【话术】+【机器人回复规则的答案】+【自学的聊天答案】 (推荐)</RadioButton>
+			</StackPanel>
+		</GroupBox>
+		<StackPanel
+			Orientation="Horizontal"
+			Margin="15">
+			<CheckBox
+				Name="cboxUseDownKey"
+				VerticalAlignment="Center">在【千牛编辑框】输入时，按【向下】键，选中【下面板】的词条</CheckBox>
+			<Button
+				Padding="5 0"
+				Margin="10 0"
+				Click="btnHelp_Click">帮助</Button>
+		</StackPanel>
+	</StackPanel>
+</UserControl>
