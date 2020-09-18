@@ -33,8 +33,8 @@ namespace Bot.Common
 
     public class DbRecordChangedEventArgs : DbRecordChangedEventArgs<EntityBase>
     {
-        public DbRecordChangedEventArgs(EntityBase EntityBase_0, EntityBase EntityBase_1)
-			: base(EntityBase_0, EntityBase_1)
+        public DbRecordChangedEventArgs(EntityBase n, EntityBase o)
+			: base(n, o)
 		{
 		}
     }

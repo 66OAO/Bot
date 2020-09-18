@@ -31,12 +31,7 @@ namespace Bot.Common
 
             public static string[] GetNicks()
             {
-                List<string> sellers = new List<string>();
-                if (_cachedNicks != null)
-                {
-                    sellers = _cachedNicks.Keys.ToList();
-                }
-                return sellers.ToArray();
+                return _cachedNicks == null ? new List<string>().ToArray() : _cachedNicks.Keys.ToArray();
             }
 
             public static Dictionary<string, LoginedSeller> Update(Dictionary<string, LoginedSeller> allNicks, out HashSet<string> removeNicks)
