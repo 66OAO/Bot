@@ -533,11 +533,11 @@ namespace Bot.Automation.ChatDeskNs
                 Desk = this
             };
             Automator = ChatDeskAutomatorFactory.Create(Hwnd, Seller);
-            chatRecordChrome = ChromeDebugerCreator.Create(this);
-            chatRecordChrome.EvChromeConnected += chatRecordChrome_EvChromeConnected;
-            chatRecordChrome.EvChromeDetached += chatRecordChrome_EvChromeDetached;
-            chatRecordChrome.EvRecieveNewMessage += chatRecordChrome_EvRecieveNewMessage;
-            chatRecordChrome.EvBuyerSwitched += Contact_EvBuyerSwitched;
+            //chatRecordChrome = ChromeDebugerCreator.Create(this);
+            //chatRecordChrome.EvChromeConnected += chatRecordChrome_EvChromeConnected;
+            //chatRecordChrome.EvChromeDetached += chatRecordChrome_EvChromeDetached;
+            //chatRecordChrome.EvRecieveNewMessage += chatRecordChrome_EvRecieveNewMessage;
+            //chatRecordChrome.EvBuyerSwitched += Contact_EvBuyerSwitched;
 
             //_buyerReader = new TaskWindowBuyerNameReader(this);
             //_buyerReader.EvBuyerChanged += Contact_EvBuyerChanged;
