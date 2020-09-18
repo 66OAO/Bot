@@ -345,15 +345,15 @@ namespace Bot.Common
             if (!_isUpdatingQnVersionCache)
             {
                 _isUpdatingQnVersionCache = true;
-                string text = "";
+                var text = string.Empty;
                 try
                 {
-                    string text2 = CUtil.GetProcessPath("Aliworkbench");
-                    if (!string.IsNullOrEmpty(text2))
+                    var qnPath = CUtil.GetProcessPath("Aliworkbench");
+                    if (!string.IsNullOrEmpty(qnPath))
                     {
-                        string path = text2 + "\\AliWorkbench.ini";
-                        string input = File.ReadAllText(path);
-                        string pattern = "(?<=Version =)[0-9\\.]+N";
+                        var path = qnPath + "\\AliWorkbench.ini";
+                        var input = File.ReadAllText(path);
+                        var pattern = "(?<=Version =)[0-9\\.]+N";
                         Match match = Regex.Match(input, pattern, RegexOptions.IgnoreCase);
                         if (match.Success)
                         {
