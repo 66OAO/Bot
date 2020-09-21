@@ -379,8 +379,8 @@ namespace Bot.ChromeNs
             catch (Exception ex)
             {
                 result = false;
-                Log.Error(ex.Message + ",ChromeService Id=" + this.Id, "SendCommandSafe", "", 138);
-                Log.Exception(ex, "SendCommandSafe", "", 139);
+                Log.Error(ex.Message + ",ChromeService Id=" + this.Id);
+                Log.Exception(ex);
             }
             return result;
         }
