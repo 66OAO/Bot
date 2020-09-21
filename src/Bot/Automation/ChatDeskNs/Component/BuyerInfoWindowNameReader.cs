@@ -108,11 +108,11 @@ namespace Bot.Automation.ChatDeskNs.Component
             try
             {
                 CloseOpenedInfoWindow();
-                if (IsFrozenDetected || (string.IsNullOrEmpty(_desk.Buyer) && _desk.GetIsSingleChatCloseButtonEnable(true)))
+                if (IsFrozenDetected || !this._desk.IsChatRecordChromeOk || (string.IsNullOrEmpty(_desk.Buyer) && _desk.GetIsSingleChatCloseButtonEnable(true)))
                 {
                     BuyerChanged();
                 }
-                if (!IsFrozenDetected && _desk.IsVisible && _desk.GetIsSingleChatCloseButtonEnable(true) && _desk.GetBuyerRegionVisibleUseCache(true) && _desk.IsForegroundOrVisibleMoreThanHalf(true))
+                if (!IsFrozenDetected && this._desk.IsChatRecordChromeOk && _desk.IsVisible && _desk.GetIsSingleChatCloseButtonEnable(true) && _desk.GetBuyerRegionVisibleUseCache(true) && _desk.IsForegroundOrVisibleMoreThanHalf(true))
                 {
                     DetectFrozen();
                 }
@@ -126,10 +126,9 @@ namespace Bot.Automation.ChatDeskNs.Component
         {
             try
             {
-                string item = GetImageB64StrNoCache(true);
-                string buyer = _desk.Buyer;
-                Cache<string, HashSet<string>> frozenCache = _frozenCache;
-                HashSet<string> imageB64StrCache = new HashSet<string>();
+                var item = GetImageB64StrNoCache(true);
+                var buyer = _desk.Buyer;
+                var imageB64StrCache = _frozenCache[buyer] ?? new HashSet<string>();
                 imageB64StrCache.Add(item);
                 if (imageB64StrCache.Count > 4)
                 {
