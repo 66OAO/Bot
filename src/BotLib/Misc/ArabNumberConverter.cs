@@ -11,13 +11,13 @@ namespace BotLib.Misc
     {
         public static string GetNumberString(string txt, int startIndex = 0, bool toBanJiao = false)
         {
-            string result;
+            string arabNumber;
             if (string.IsNullOrEmpty(txt) || startIndex < 0 || startIndex > txt.Length) return null;
             if (toBanJiao)
             {
                 txt = txt.xToBanJiao();
             }
-            bool flag2 = false;
+            bool hasDot = false;
             int i = startIndex;
             if (txt[i] == '+' || txt[i] == '-')
             {
@@ -32,18 +32,18 @@ namespace BotLib.Misc
                     {
                         break;
                     }
-                    if (flag2)
+                    if (hasDot)
                     {
                         break;
                     }
-                    flag2 = true;
+                    hasDot = true;
                 }
                 i++;
             }
             string text = txt.Substring(startIndex, i - startIndex);
             if (string.IsNullOrEmpty(text) || text[0] == ',')
             {
-                result = null;
+                arabNumber = null;
             }
             else
             {
@@ -55,10 +55,10 @@ namespace BotLib.Misc
                     }
                     text = text.Substring(0, text.Length - 1);
                 }
-                result = text;
+                arabNumber = text;
             }
 
-            return result;
+            return arabNumber;
         }
     }
 }

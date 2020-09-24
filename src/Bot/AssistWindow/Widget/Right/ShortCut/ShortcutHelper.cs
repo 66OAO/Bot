@@ -29,35 +29,33 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
 
         private static void SetOrSendShortcut(this ShortcutEntity shortcut, ChatDesk desk, bool isSend, bool focusEditor)
         {
-            if (shortcut != null)
+            if (shortcut == null) return;
+            if (string.IsNullOrEmpty(shortcut.ImageName))
             {
-                if (string.IsNullOrEmpty(shortcut.ImageName))
+                if (isSend)
+                {
+                    desk.Editor.SendPlainText(shortcut.Text);
+                    desk.Editor.FocusEditor(true);
+                }
+                else
+                {
+                    desk.Editor.SetPlainText(shortcut.Text, true, focusEditor);
+                }
+            }
+            else
+            {
+                ShortcutImageHelper.UseImage(shortcut.ImageName, image =>
                 {
                     if (isSend)
                     {
-                        desk.Editor.SendPlainText(shortcut.Text);
+                        desk.Editor.SendPlainTextAndImage(shortcut.Text, image);
                         desk.Editor.FocusEditor(true);
                     }
                     else
                     {
-                        desk.Editor.SetPlainText(shortcut.Text, true, focusEditor);
+                        desk.Editor.SetPlainTextAndImage(shortcut.Text, image, focusEditor);
                     }
-                }
-                else
-                {
-                    ShortcutImageHelper.UseImage(shortcut.ImageName, image =>
-                    {
-                        if (isSend)
-                        {
-                            desk.Editor.SendPlainTextAndImage(shortcut.Text, image);
-                            desk.Editor.FocusEditor(true);
-                        }
-                        else
-                        {
-                            desk.Editor.SetPlainTextAndImage(shortcut.Text, image, focusEditor);
-                        }
-                    });
-                }
+                });
             }
         }
 
@@ -67,7 +65,7 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
             var ses = DbHelper.Fetch<ShortcutEntity>();
             if (!ses.xIsNullOrEmpty())
             {
-                ses = (ses.Where(k => k.DbAccount.Contains(mainNick)).ToList() ?? new List<EntityBase>());
+                ses = ses.Where(k => k.DbAccount.Contains(mainNick)).ToList() ?? new List<EntityBase>();
             }
             return ses.Select(k => k as ShortcutEntity).ToList();
         }

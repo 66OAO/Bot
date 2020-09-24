@@ -91,6 +91,7 @@
     <Compile Include="Extensions\RandomEx.cs" />
     <Compile Include="Extensions\RegexEx.cs" />
     <Compile Include="Extensions\StopwatchEx.cs" />
+    <Compile Include="Extensions\StreamReaderEx.cs" />
     <Compile Include="Extensions\StringEx.cs" />
     <Compile Include="Extensions\ThreadEx.cs" />
     <Compile Include="Extensions\TypeEx.cs" />
@@ -103,6 +104,9 @@
     <Compile Include="Misc\ArabNumberConverter.cs" />
     <Compile Include="Misc\Base32Encoding.cs" />
     <Compile Include="Misc\ComputerInfo.cs" />
+    <Compile Include="Misc\ConstIntArray.cs" />
+    <Compile Include="Misc\CsvConvertor.cs" />
+    <Compile Include="Misc\CsvFileHelper.cs" />
     <Compile Include="Misc\DelayCaller.cs" />
     <Compile Include="Misc\IndexRange.cs" />
     <Compile Include="Misc\NetworkDiagnoser.cs" />

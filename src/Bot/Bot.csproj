@@ -221,9 +221,13 @@
       <DependentUpon>CtlShortcutEntity.xaml</DependentUpon>
     </Compile>
     <Compile Include="AssistWindow\Widget\Right\ShortCut\ShortcutHelper.cs" />
+    <Compile Include="AssistWindow\Widget\Right\ShortCut\ShortcutImporter.cs" />
     <Compile Include="AssistWindow\Widget\Right\ShortCut\ShortcutTreeviewController.cs" />
     <Compile Include="AssistWindow\Widget\Right\ShortCut\WndShortcutEditor.xaml.cs">
       <DependentUpon>WndShortcutEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssistWindow\Widget\Right\ShortCut\WndShortcutImporter.xaml.cs">
+      <DependentUpon>WndShortcutImporter.xaml</DependentUpon>
     </Compile>
     <Compile Include="AssistWindow\Widget\Robot\CtlRobotQA.xaml.cs">
       <DependentUpon>CtlRobotQA.xaml</DependentUpon>
@@ -423,6 +427,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AssistWindow\Widget\Right\ShortCut\WndShortcutEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AssistWindow\Widget\Right\ShortCut\WndShortcutImporter.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

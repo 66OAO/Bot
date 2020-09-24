@@ -1,0 +1,92 @@
+<b:EtWindow
+	x:Class="Bot.AssistWindow.Widget.Right.ShortCut.WndShortcutImporter" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:b="clr-namespace:Bot.Common.Windows" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+    xmlns:sb="clr-namespace:Wpf.Controls;assembly=Wpf.SplitButton" 
+    xmlns:local="clr-namespace:EaseTalk.AssistWindow.Widget.Right.ShortCut"
+	b:Title="导入快捷短语"
+	SizeToContent="Height"
+	Width="450"
+	ResizeMode="NoResize">
+	<Grid
+		Margin="20">
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="auto" />
+			<RowDefinition
+				Height="auto" />
+			<RowDefinition
+				Height="auto" />
+			<RowDefinition
+				Height="auto" />
+			<RowDefinition
+				Height="auto" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition
+				Width="auto" />
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+		<TextBlock
+			Grid.Row="1"
+			Margin="10 0 0 0"
+			VerticalAlignment="Center">文件路径：</TextBlock>
+		<xctk:WatermarkTextBox
+			Name="wtboxFilename"
+			Grid.Row="1"
+			Grid.Column="1"
+			Margin="0 5 0 5"
+			IsReadOnly="True"
+			Watermark="点击，选择文件"
+			ToolTip="点击，选择文件"
+			PreviewMouseDown="wtboxFilename_PreviewMouseDown" />
+		<GroupBox
+			Grid.Row="2"
+			Grid.ColumnSpan="2"
+			Header="替换方式"
+			Padding="5">
+			<StackPanel>
+				<RadioButton
+					Name="rbtAppend"
+					Click="rbtReplace_Click">合并式导入：将导入的短语合与现有的短语相合并</RadioButton>
+				<RadioButton
+					Name="rbtReplace"
+					Margin="0 5 0 0"
+					Click="rbtReplace_Click">替换式导入：不保留现有的短语，只留下导入的短语</RadioButton>
+			</StackPanel>
+		</GroupBox>
+		<GroupBox
+			Grid.Row="3"
+			Grid.ColumnSpan="2"
+			Header="导入成"
+			Padding="5">
+			<StackPanel>
+				<RadioButton
+					Name="rbtPub"
+					Click="rbtPrv_Click">导入成：全店通用短语</RadioButton>
+				<RadioButton
+					Name="rbtPrv"
+					Margin="0 5 0 0"
+					Click="rbtPrv_Click">导入成：个人专用短语</RadioButton>
+			</StackPanel>
+		</GroupBox>
+		<Button
+			Grid.Row="4"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Bottom"
+			Click="btnHelp_Click">帮助</Button>
+		<Button
+			Grid.Row="4"
+			Grid.Column="1"
+			Margin="0 10 0 0"
+			Padding="10 5"
+			HorizontalAlignment="Right"
+			VerticalAlignment="Bottom"
+			Content="导入(_Y)"
+			Click="btnImport_Click" />
+	</Grid>
+</b:EtWindow>

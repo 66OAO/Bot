@@ -23,7 +23,7 @@ namespace Bot.Common.Account
 
         public static string GetPubDbAccount(string seller)
         {
-            return TbNickHelper.ConvertNickToPubDbAccount(seller);
+            return HybridHelper.GetValue<string>(seller, HybridKey.PubDbAccount.ToString(), TbNickHelper.ConvertNickToPrvDbAccount(seller));
         }
 
         public static string GetShopDbAccount(string seller)
