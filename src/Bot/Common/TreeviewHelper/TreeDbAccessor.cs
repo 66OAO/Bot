@@ -152,15 +152,15 @@ namespace Bot.Common.TreeviewHelper
             return nodes;
         }
 
-        private void MakeNodeSort(string entityId, List<TreeNode> list_0)
+        private void MakeNodeSort(string entityId, List<TreeNode> nodes)
         {
             var cNodes = this.ReadDescendantList(entityId, false);
             foreach (var node in cNodes)
             {
-                list_0.Add(node);
+                nodes.Add(node);
                 if (this.IsCatalogType(node))
                 {
-                    this.MakeNodeSort(node.EntityId, list_0);
+                    this.MakeNodeSort(node.EntityId, nodes);
                 }
             }
         }
@@ -394,14 +394,17 @@ namespace Bot.Common.TreeviewHelper
                 string dbAccount;
                 if (prev != null)
                 {
-                    if ((dbAccount = prev.DbAccount) != null)
+                    dbAccount = prev.DbAccount;
+                    if (!string.IsNullOrEmpty(dbAccount))
                     {
-                        goto IL_2C;
+                        n.DbAccount = dbAccount;
                     }
                 }
-                dbAccount = next.DbAccount;
-            IL_2C:
-                n.DbAccount = dbAccount;
+                else
+                {
+                    dbAccount = next.DbAccount;
+                    n.DbAccount = dbAccount;
+                }
             }
             if (prev != null)
             {
