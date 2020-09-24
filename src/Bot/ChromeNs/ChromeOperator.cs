@@ -213,12 +213,12 @@ namespace Bot.ChromeNs
 
         public static ChromeOperator Create(string wsurl, string title)
         {
-            IChromeSession session = new ChromeSessionFactory().Create(wsurl, title);
+            var session = new ChromeSessionFactory().Create(wsurl, title);
             return new ChromeOperator((ChromeSession)session);
         }
         public static ChromeOperator Create(string sessionInfoUrl, List<string> titleClues, out List<ChromeSessionInfo> otherWsUrls)
         {
-            ChromeSession chromeSession = CreateChromeSession(sessionInfoUrl, titleClues, out otherWsUrls);
+            var chromeSession = CreateChromeSession(sessionInfoUrl, titleClues, out otherWsUrls);
             return (chromeSession == null) ? null : new ChromeOperator(chromeSession);
         }
 
@@ -293,13 +293,13 @@ namespace Bot.ChromeNs
         public MasterDevs.ChromeDevTools.Protocol.Chrome.Network.Cookie[] GetAllCookies()
         {
             MasterDevs.ChromeDevTools.Protocol.Chrome.Network.Cookie[] cookies = null;
-            ICommandResponse commandResponse;
-            if (this.SendCommandSafe<GetAllCookiesCommand>(out commandResponse, null))
+            ICommandResponse res;
+            if (this.SendCommandSafe<GetAllCookiesCommand>(out res, null))
             {
-                CommandResponse<GetAllCookiesCommandResponse> commandResponse2 = commandResponse as CommandResponse<GetAllCookiesCommandResponse>;
-                if (commandResponse2 != null)
+                var resCookies = res as CommandResponse<GetAllCookiesCommandResponse>;
+                if (resCookies != null)
                 {
-                    cookies = commandResponse2.Result == null ? null : commandResponse2.Result.Cookies;
+                    cookies = resCookies.Result == null ? null : resCookies.Result.Cookies;
                 }
             }
             return cookies;
@@ -309,19 +309,19 @@ namespace Bot.ChromeNs
         {
             bool hasGetHtml = false;
             html = "";
-            ICommandResponse commandResponse;
-            if (this.SendCommandSafe<GetDocumentCommand>(out commandResponse, null))
+            ICommandResponse res;
+            if (this.SendCommandSafe<GetDocumentCommand>(out res, null))
             {
-                CommandResponse<GetDocumentCommandResponse> commandResponse2 = commandResponse as CommandResponse<GetDocumentCommandResponse>;
-                long nodeId = commandResponse2.Result.Root.NodeId;
+                var resDoc = res as CommandResponse<GetDocumentCommandResponse>;
+                long nodeId = resDoc.Result.Root.NodeId;
                 GetOuterHTMLCommand parameter = new GetOuterHTMLCommand
                 {
                     NodeId = nodeId
                 };
-                if (this.SendCommandSafe<GetOuterHTMLCommand>(out commandResponse, parameter))
+                if (this.SendCommandSafe<GetOuterHTMLCommand>(out res, parameter))
                 {
-                    CommandResponse<GetOuterHTMLCommandResponse> commandResponse3 = commandResponse as CommandResponse<GetOuterHTMLCommandResponse>;
-                    html = (commandResponse3.Result.OuterHTML ?? "");
+                    var resHtml = res as CommandResponse<GetOuterHTMLCommandResponse>;
+                    html = (resHtml.Result.OuterHTML ?? "");
                     hasGetHtml = true;
                 }
             }
@@ -397,15 +397,15 @@ namespace Bot.ChromeNs
         public bool Eval(string cmd, out string resultTxt)
         {
             resultTxt = null;
-            ICommandResponse commandResponse;
-            bool result;
-            if (result = this.Eval(out commandResponse, cmd))
+            ICommandResponse res;
+            bool et;
+            if (et = this.Eval(out res, cmd))
             {
-                CommandResponse<EvaluateCommandResponse> res = commandResponse as CommandResponse<EvaluateCommandResponse>;
-                object retVal = res.Result.Result.Value;
+                var resEval = res as CommandResponse<EvaluateCommandResponse>;
+                var retVal = resEval.Result.Result.Value;
                 resultTxt = ((retVal != null) ? retVal.ToString() : null);
             }
-            return result;
+            return et;
         }
         public bool EvalForJsInsert(string jsurl)
         {
@@ -524,7 +524,7 @@ namespace Bot.ChromeNs
             }
             catch
             {
-                Log.Error("can't connect ws.", "Connectable", "", 488);
+                Log.Error("can't connect ws.");
             }
             return rt;
         }
