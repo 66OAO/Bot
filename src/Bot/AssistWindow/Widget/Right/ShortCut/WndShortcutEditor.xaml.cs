@@ -116,26 +116,24 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
 
         private bool Validate()
 		{
-			bool result;
-			if ((result = this._data.Submitable()) && this.imgMain.Tag != null)
+			bool rt = false;
+			if ((rt = this._data.Submitable()) && this.imgMain.Tag != null)
 			{
-				string text = this.tboxCode.Text;
-				bool flag;
-				if (string.IsNullOrEmpty((text != null) ? text.Trim() : null))
+				var code = this.tboxCode.Text;
+				if (string.IsNullOrEmpty((code != null) ? code.Trim() : null))
 				{
-					string text2 = this.tboxContent.Text;
-					flag = !string.IsNullOrEmpty((text2 != null) ? text2.Trim() : null);
+                    rt = !string.IsNullOrEmpty((tboxContent.Text != null) ? tboxContent.Text.Trim() : null);
 				}
 				else
 				{
-					flag = true;
+                    rt = true;
 				}
-				if (!(result = flag))
+				if (!rt)
 				{
                     MsgBox.ShowErrTip("选中图片时，至少还要设置【快捷编码】或者【分类短语】", null);
 				}
 			}
-			return result;
+			return rt;
 		}
 
 		private void ShowImage(string imageName)

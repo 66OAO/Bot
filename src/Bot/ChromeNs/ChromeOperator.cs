@@ -352,7 +352,7 @@ namespace Bot.ChromeNs
         public bool SendCommandSafe<T>(out ICommandResponse rsp, T parameter = default(T)) where T : class
         {
             rsp = null;
-            bool result = true;
+            bool rt = true;
             try
             {
                 if (this.Session == null)
@@ -378,11 +378,11 @@ namespace Bot.ChromeNs
             }
             catch (Exception ex)
             {
-                result = false;
+                rt = false;
                 Log.Error(ex.Message + ",ChromeService Id=" + this.Id);
                 Log.Exception(ex);
             }
-            return result;
+            return rt;
         }
         public bool Eval(out ICommandResponse rsp, string cmd)
         {
@@ -398,14 +398,14 @@ namespace Bot.ChromeNs
         {
             resultTxt = null;
             ICommandResponse res;
-            bool et;
-            if (et = this.Eval(out res, cmd))
+            bool evalRt;
+            if (evalRt = this.Eval(out res, cmd))
             {
                 var resEval = res as CommandResponse<EvaluateCommandResponse>;
                 var retVal = resEval.Result.Result.Value;
                 resultTxt = ((retVal != null) ? retVal.ToString() : null);
             }
-            return et;
+            return evalRt;
         }
         public bool EvalForJsInsert(string jsurl)
         {
@@ -414,20 +414,20 @@ namespace Bot.ChromeNs
         }
         public bool EvalForInsertJsSdk()
         {
-            bool result;
+            bool rt;
             if (this.hadevalinsertjs)
             {
-                result = true;
+                rt = true;
             }
             else
             {
                 this.hadevalinsertjs = true;
                 string cmd = " var oHead = document.getElementsByTagName('HEAD').item(0);                                             var oScript= document.createElement('script');                                             oScript.type = 'text/javascript';                                            oScript.src ='//g.alicdn.com/sj/qn/jssdk.js?t=20140115000000';                                            oHead.appendChild(oScript); ";
-                bool flag = this.Eval(cmd);
+                var evalRt = this.Eval(cmd);
                 cmd = " var oHead = document.getElementsByTagName('HEAD').item(0);                                             var oScript= document.createElement('script');                                             oScript.type = 'text/javascript';                                            oScript.src ='//g.alicdn.com/secdev/pointman/js/index.js#args=appkey%3d21619184';                                            oScript.app='QNPluginSecurity';                                            oHead.appendChild(oScript); ";
-                result = (flag && this.Eval(cmd));
+                rt = (evalRt && this.Eval(cmd));
             }
-            return result;
+            return rt;
         }
         public bool IsListeningMessage()
         {

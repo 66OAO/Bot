@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
     xmlns:sb="clr-namespace:Wpf.Controls;assembly=Wpf.SplitButton" 
-    xmlns:local="clr-namespace:EaseTalk.AssistWindow.Widget.Right.ShortCut"
+    xmlns:local="clr-namespace:Bot.AssistWindow.Widget.Right.ShortCut"
 	b:Title="导入快捷短语"
 	SizeToContent="Height"
 	Width="450"
