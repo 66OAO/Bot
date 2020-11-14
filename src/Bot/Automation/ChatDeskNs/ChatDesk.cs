@@ -533,7 +533,7 @@ namespace Bot.Automation.ChatDeskNs
                 Desk = this
             };
             Automator = ChatDeskAutomatorFactory.Create(Hwnd, Seller);
-            //chatRecordChrome = ChromeDebugerCreator.Create(this);
+            chatRecordChrome = ChromeDebugerCreator.Create(this);
             //chatRecordChrome.EvChromeConnected += chatRecordChrome_EvChromeConnected;
             //chatRecordChrome.EvChromeDetached += chatRecordChrome_EvChromeDetached;
             //chatRecordChrome.EvRecieveNewMessage += chatRecordChrome_EvRecieveNewMessage;

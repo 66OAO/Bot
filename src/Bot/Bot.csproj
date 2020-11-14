@@ -220,8 +220,10 @@
     <Compile Include="AssistWindow\Widget\Right\ShortCut\CtlShortcutEntity.xaml.cs">
       <DependentUpon>CtlShortcutEntity.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AssistWindow\Widget\Right\ShortCut\Importer.cs" />
+    <Compile Include="AssistWindow\Widget\Right\ShortCut\QnShortcutImporter.cs" />
     <Compile Include="AssistWindow\Widget\Right\ShortCut\ShortcutHelper.cs" />
-    <Compile Include="AssistWindow\Widget\Right\ShortCut\ShortcutImporter.cs" />
+    <Compile Include="AssistWindow\Widget\Right\ShortCut\BotShortcutImporter.cs" />
     <Compile Include="AssistWindow\Widget\Right\ShortCut\ShortcutTreeviewController.cs" />
     <Compile Include="AssistWindow\Widget\Right\ShortCut\WndShortcutEditor.xaml.cs">
       <DependentUpon>WndShortcutEditor.xaml</DependentUpon>

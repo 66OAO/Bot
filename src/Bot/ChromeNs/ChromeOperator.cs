@@ -18,6 +18,7 @@ using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
+using BotLib.Net;
 
 namespace Bot.ChromeNs
 {
@@ -512,7 +513,7 @@ namespace Bot.ChromeNs
             string uri = GetSessionInfoUrl(deskHwnd);
             try
             {
-                using (WebClient myWebClient = new WebClient())
+                using (MyWebClient myWebClient = new MyWebClient(2000))
                 {
                     UriBuilder uriBuilder = new UriBuilder(uri);
                     uriBuilder.Path = "/json";

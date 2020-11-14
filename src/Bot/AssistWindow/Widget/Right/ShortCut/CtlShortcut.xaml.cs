@@ -20,6 +20,7 @@ using BotLib.Misc;
 using BotLib.Wpf.Extensions;
 using Xceed.Wpf.Toolkit;
 using DbEntity;
+using Bot.Options;
 
 namespace Bot.AssistWindow.Widget.Right.ShortCut
 {
@@ -183,10 +184,10 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
                     this.SetOrSendShortcut(shortcut, true);
                     e.Handled = true;
                 }
-                //else
-                //{
-                //    Util.Assert(false, "节点为空", "OnTreeviewDoubleClick");
-                //}
+                else
+                {
+                    Util.Assert(false, "节点为空");
+                }
             }
         }
 
@@ -697,10 +698,10 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
                     this.LoadDatas(ctv, null);
                     if (!ctv.IsCatalogType(tn))
                     {
-                        ShortcutEntity shortcutEntity = tn as ShortcutEntity;
-                        if (shortcutEntity != null && !string.IsNullOrEmpty(shortcutEntity.ImageName))
+                        var shortcut = tn as ShortcutEntity;
+                        if (shortcut != null && !string.IsNullOrEmpty(shortcut.ImageName))
                         {
-                            ShortcutImageHelper.DeleteImage(shortcutEntity.ImageName);
+                            ShortcutImageHelper.DeleteImage(shortcut.ImageName);
                         }
                     }
                 }
@@ -858,14 +859,17 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
 
         private void mImport_Click(object sender, RoutedEventArgs e)
         {
-            //WndShortcutImporter.MyShow(this._seller, this.xFindParentWindow(), ()=>{
-            //    this.ShowTip("正在导入分类短语");
-            //}, ()=>{
-            //    DispatcherEx.xInvoke(()=>{
-            //    this.LoadDatas(null, null);
-            //    this.HideTip();
-            //    };
-            //});
+            WndShortcutImporter.MyShow(this._seller, this.xFindParentWindow(), 
+                ()=>{
+                    ShowTip("正在导入话术");
+                    this.spTip.Visibility = Visibility.Visible;
+                    this.grdMain.IsEnabled = false;
+                },()=>{
+                    DispatcherEx.xInvoke(()=>{
+                        this.LoadDatas(null, null);
+                        this.HideTip();
+                    });
+                });
         }
 
         private void ShowTip(string msg)
@@ -889,10 +893,8 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
         private void mExport_Click(object sender, RoutedEventArgs e)
         {
             string mainPart = TbNickHelper.GetMainPart(this._seller);
-            ShortcutTreeviewController pubTvController = this._pubTvController;
-            //TreeDbAccessor pubDbAccessor = (pubTvController != null) ? pubTvController.DbAccessor : null;
-            //ShortcutTreeviewController prvTvController = this._prvTvController;
-            //ExporterV2.Export(mainPart, pubDbAccessor, (prvTvController != null) ? prvTvController.DbAccessor : null);
+            TreeDbAccessor pubDbAccessor = (_pubTvController != null) ? _pubTvController.DbAccessor : null;
+            //Exporter.Export(mainPart, pubDbAccessor, (_prvTvController != null) ? _prvTvController.DbAccessor : null);
         }
 
         private void OnOpenContextMenu(object sender, RoutedEventArgs e)
@@ -914,17 +916,16 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
 
         private void mHideTitle_Click(object sender, RoutedEventArgs e)
         {
-            //MsgBox.ShowTip("确定要隐藏第一行的按钮？", isYesButtonClicked =>
-            //{
-            //    if (isYesButtonClicked)
-            //    {
-            //        string message = "右击任意的分类短语，弹出的菜单中，可以恢复显示这些按钮！";
-            //        MsgBox.ShowTip(message,null,null,null);
-            //        this.grdTitleButtons.xIsVisible(false);
-            //        Params.Shortcut.SetIsShowTitleButtons(this._desk.Seller, false);
-            //        this.ShowTitleButtons();
-            //    }
-            //}, null, null);
+            MsgBox.ShowTip("确定要隐藏第一行的按钮？", isYesButtonClicked =>
+            {
+                if (isYesButtonClicked)
+                {
+                    MsgBox.ShowTip("右击任意的分类短语，弹出的菜单中，可以恢复显示这些按钮！", "提示");
+                    this.grdTitleButtons.xIsVisible(false);
+                    Params.Shortcut.SetIsShowTitleButtons(this._desk.Seller, false);
+                    this.ShowTitleButtons();
+                }
+            }, null, null);
         }
 
         private void mShowTitle_Click(object sender, RoutedEventArgs e)
@@ -951,7 +952,7 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
 
         private void mSetting_Click(object sender, RoutedEventArgs e)
         {
-            //WndOption.MyShow(this._seller, null, OptionEnum.Shortcut, null);
+            WndOption.MyShow(this._seller, null, OptionEnum.Shortcut, null);
         }
 
         private void mPasteNode_Click(object sender, RoutedEventArgs e)
@@ -1012,7 +1013,7 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
             toDbAccessor.AddNext(newNode, targetNode);
             if (this.IsCatalog(newNode))
             {
-                this.PasteChildNodes(newNode, fromDbAccessor.ReadChildNode(this._nodeToBeCopy.EntityId, true), toDbAccessor, fromDbAccessor);
+                this.PasteChildNodes(newNode, fromDbAccessor.ReadDescendantNode(this._nodeToBeCopy.EntityId, true), toDbAccessor, fromDbAccessor);
             }
             return newNode;
         }
@@ -1063,7 +1064,7 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
             toDbAccessor.AddNodeToTargetNode(pasteNode, toNode.EntityId);
             if (this.IsCatalog(pasteNode))
             {
-                this.PasteChildNodes(pasteNode, fromDbAccessor.ReadChildNode(fromNode.EntityId, true), toDbAccessor, fromDbAccessor);
+                this.PasteChildNodes(pasteNode, fromDbAccessor.ReadDescendantNode(fromNode.EntityId, true), toDbAccessor, fromDbAccessor);
             }
             return pasteNode;
         }

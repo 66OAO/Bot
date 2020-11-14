@@ -10,7 +10,7 @@ namespace Bot
 {
     public class AppLife
     {
-        public static void Init()
+        public static void OnStart()
         {
             AppLife.InitLogFile();
         }

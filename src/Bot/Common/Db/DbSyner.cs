@@ -47,6 +47,8 @@ namespace Bot.Common.Db
             }
         }
 
+        public static bool IsBanSyn;
+
         static DbSyner()
         {
             _autoSynInterval = 600000;
@@ -102,7 +104,7 @@ namespace Bot.Common.Db
 	        {
                 lock (_synObj)
 		        {
-			        if (!isCallByRecursive && IsSyning)
+			        if ((!isCallByRecursive && IsSyning) || DbSyner.IsBanSyn)
 			        {
 				        return;
 			        }
@@ -343,5 +345,6 @@ namespace Bot.Common.Db
                 };
             }
         }
+
     }
 }

@@ -715,7 +715,7 @@ namespace Bot.Common.TreeviewHelper
                 Util.Assert(parentIt != null && pNode != null && pNode.EntityId != null && this.IsCatalogType(pNode));
                 var n = this.ReadNode(dragSource);
                 n.ParentId = pNode.EntityId;
-                List<TreeNode> list = this._ctl.DbAccessor.ReadChildNode(pNode.EntityId, true);
+                List<TreeNode> list = this._ctl.DbAccessor.ReadDescendantNode(pNode.EntityId, true);
                 TreeNode lastNode = (list != null) ? list.LastOrDefault<TreeNode>() : null;
                 if (lastNode != null)
                 {

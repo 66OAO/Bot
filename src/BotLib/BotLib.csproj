@@ -115,6 +115,9 @@
     <Compile Include="Misc\SkipIfExcuting.cs" />
     <Compile Include="Misc\TraditionToSimplifyChineseConverter.cs" />
     <Compile Include="Misc\Zip.cs" />
+    <Compile Include="Net\MyWebClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Net\NetUtil.cs" />
     <Compile Include="Params.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -21,7 +21,7 @@ namespace Bot.SingleStartUp
                     if (createdNew)
 					{
                         KillProcess();
-						AppLife.Init();
+						AppLife.OnStart();
 						App app = new App();
 						app.InitializeComponent();
 						app.Run(WndNotifyIcon.Inst);

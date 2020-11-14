@@ -134,7 +134,7 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
 
         private string GetDbAccount(string fileName)
 		{
-            return ShortcutImporter.GetDbAccount(fileName);
+            return BotShortcutImporter.GetDbAccount(fileName);
 		}
 
 		private void btnHelp_Click(object sender, RoutedEventArgs e)
@@ -176,7 +176,9 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
 					_onStartImport();
 				}
 				Task.Factory.StartNew(()=>{
-                    
+
+                    if (_onImportFinished != null)
+                        _onImportFinished();
                 }, TaskCreationOptions.LongRunning);
 			}
 		}

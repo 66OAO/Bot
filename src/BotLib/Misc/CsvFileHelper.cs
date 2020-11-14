@@ -19,7 +19,7 @@ namespace BotLib.Misc
         {
             List<List<string>> lines = new List<List<string>>();
             int nline = 0;
-            StreamReaderEx.OpenSteamForRead(fn, enc, delegate(StreamReader sr)
+            StreamReaderEx.OpenSteamForRead(fn, enc, sr=>
             {
                 while (!sr.EndOfStream && (maxlines <= 0 || nline < maxlines))
                 {

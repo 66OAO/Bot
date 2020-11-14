@@ -102,17 +102,17 @@ namespace Bot.Common.TreeviewHelper
 
         private TreeNode ReadLastChildNode(string entityId)
         {
-            List<TreeNode> list = this.ReadDescendantList(entityId, true);
-            TreeNode result;
-            if (list != null && list.Count > 0)
+            var desNs = this.ReadDescendantList(entityId, true);
+            TreeNode n;
+            if (desNs != null && desNs.Count > 0)
             {
-                result = list.Last();
+                n = desNs.Last();
             }
             else
             {
-                result = null;
+                n = null;
             }
-            return result;
+            return n;
         }
 
         private List<TreeNode> FixAllNodeInTheTree(out HashSet<string> nodeIds)
@@ -175,20 +175,20 @@ namespace Bot.Common.TreeviewHelper
 
         private TreeNode ReadRootFromDb()
         {
-            List<TreeNode> list = DbHelper.Fetch<TreeNode>(this._catalogType, this._dbAccount, (TreeNode x) =>
+            var nds = DbHelper.Fetch<TreeNode>(this._catalogType, this._dbAccount, (TreeNode x) =>
             {
                 TreeCatalog TreeCatalog = (TreeCatalog)x;
                 return TreeCatalog.Name == "Root!@#$Catalog$%&Header*&()";
             });
             TreeNode result = null;
-            int cnt = list.xCount();
+            int cnt = nds.xCount();
             if (cnt == 1)
             {
-                result = list[0];
+                result = nds[0];
             }
             else if (cnt > 1)
             {
-                result = this.FixExtraRoot(list);
+                result = this.FixExtraRoot(nds);
             }
             return result;
         }
@@ -282,16 +282,16 @@ namespace Bot.Common.TreeviewHelper
 
         public TreeNode ReadNodeById(string entityId)
         {
-            TreeNode result;
+            TreeNode nd;
             if (entityId == null)
             {
-                result = null;
+                nd = null;
             }
             else
             {
-                result = (this.ReadNodeByIdAndType(entityId, this._leafType) ?? this.ReadNodeByIdAndType(entityId, this._catalogType));
+                nd = (this.ReadNodeByIdAndType(entityId, this._leafType) ?? this.ReadNodeByIdAndType(entityId, this._catalogType));
             }
-            return result;
+            return nd;
         }
 
         public void DeleteLeaf(TreeNode et)
@@ -507,19 +507,19 @@ namespace Bot.Common.TreeviewHelper
             return (leafs != null && leafs.Count() > 0) || (catas != null && catas.Count() > 0);
         }
 
-        public List<TreeNode> ReadDescendant(string string_0, bool bool_0 = true)
+        public List<TreeNode> ReadDescendant(string rootId, bool sortByChain = true)
         {
-            List<TreeNode> list = new List<TreeNode>();
-            List<TreeNode> list2 = this.ReadChildNode(string_0, bool_0);
-            list.AddRange(list2);
-            foreach (TreeNode TreeNode in list2)
+            var allNodes = new List<TreeNode>();
+            var desNodes = this.ReadDescendantNode(rootId, sortByChain);
+            allNodes.AddRange(desNodes);
+            foreach (var TreeNode in desNodes)
             {
                 if (this.IsCatalogType(TreeNode))
                 {
-                    list.AddRange(this.ReadDescendant(TreeNode.EntityId, bool_0));
+                    allNodes.AddRange(this.ReadDescendant(TreeNode.EntityId, sortByChain));
                 }
             }
-            return list;
+            return allNodes;
         }
 
         public bool IsCatalogType(TreeNode x)
@@ -532,7 +532,7 @@ namespace Bot.Common.TreeviewHelper
             return x.GetType().Equals(this._leafType);
         }
 
-        public List<TreeNode> ReadChildNode(string parentId, bool sortByChain = true)
+        public List<TreeNode> ReadDescendantNode(string parentId, bool sortByChain = true)
         {
             List<TreeNode> childNodes = new List<TreeNode>();
             var cataNodes = this.ReadChildNodes(this._catalogType, this._dbAccount, parentId);
@@ -554,7 +554,7 @@ namespace Bot.Common.TreeviewHelper
 
         public List<TreeNode> ReadChildCatalogById(string entityId)
         {
-            List<TreeNode> source = this.ReadChildNode(entityId, true);
+            List<TreeNode> source = this.ReadDescendantNode(entityId, true);
             return source.Where(n => this.IsCatalogType(n)).ToList();
         }
 

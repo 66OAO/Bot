@@ -249,9 +249,6 @@ namespace Bot.Automation.ChromeDebugger
             }
         }
 
-
-
-
     }
 
 }
