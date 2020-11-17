@@ -40,18 +40,7 @@ namespace Bot.Robot.Rule.QaCiteTableV2
 			_inputSugestHelper.AddInputPromptWordCite(txt);
 		}
 
-        public WordCiteData GetWordCite(string text)
-		{
-			var wordCiteData = CiteDict.xTryGetValue(text, null);
-			if (wordCiteData == null)
-			{
-				wordCiteData = new WordCiteData();
-				CiteDict.TryAdd(text, wordCiteData);
-			}
-			return wordCiteData;
-		}
-
-        public void LoadFromDb(bool force = false)
+        public void ReadFromDb(bool force = false)
 		{
 			lock (_initSynObj)
 			{
@@ -72,7 +61,7 @@ namespace Bot.Robot.Rule.QaCiteTableV2
 			_isInited = true;
 		}
 
-        public WordCiteData GetWordCiteData(string wdKey)
+        public WordCiteData TryGetWordCiteData(string wdKey)
         {
             var wordCiteData = CiteDict.xTryGetValue(wdKey, null);
             if (wordCiteData == null)
@@ -89,18 +78,18 @@ namespace Bot.Robot.Rule.QaCiteTableV2
             var ses = ShortcutHelper.GetShopShortcuts(mainNick);
             foreach (var et in ses)
             {
-                AddInputPromptWordCite(et);
+                AddOrUpdateInputPromptWordCite(et);
             }
         }
 
-        public void AddInputPromptWordCite(ShortcutEntity et)
+        public void AddOrUpdateInputPromptWordCite(ShortcutEntity shortcut)
         {
-            _inputSugestHelper.AddInputPromptWordCite(et);
+            _inputSugestHelper.AddOrUpdateInputPromptWordCite(shortcut);
         }
 
         public List<CtlAnswer.Item4Show> GetInputSugestion(string input, Dictionary<long, double> contextNumiid = null, int maxCount = 5)
 		{
-            var prompts=  _inputSugestHelper.GetInputSugestion(input, contextNumiid, maxCount);
+           var prompts = _inputSugestHelper.GetInputSugestion(input, contextNumiid, maxCount);
             prompts = prompts ?? new List<InputPromptString>();
             return prompts.Select(k =>
             {

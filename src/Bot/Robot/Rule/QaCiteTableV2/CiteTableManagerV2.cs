@@ -6,6 +6,7 @@ using BotLib;
 using BotLib.Extensions;
 using Bot.Common.Account;
 using Bot.AssistWindow.Widget.Bottom;
+using DbEntity;
 
 namespace Bot.Robot.Rule.QaCiteTableV2
 {
@@ -34,6 +35,15 @@ namespace Bot.Robot.Rule.QaCiteTableV2
             return sugs;
 		}
 
+        public static void AddOrUpdateShortcutToInputPromptWordCite(ShortcutEntity shortcut)
+        {
+            var ctv = GetCiteTable(shortcut.DbAccount);
+            if (ctv != null)
+            {
+                ctv.AddOrUpdateInputPromptWordCite(shortcut);
+            }
+        }
+
         private static CiteTableV2 GetCiteTable(string dbAccount)
 		{
 			var citeTb = _dict.xTryGetValue(dbAccount, null);
@@ -55,7 +65,7 @@ namespace Bot.Robot.Rule.QaCiteTableV2
         public static void InitCiteTables(string dbAccount)
 		{
             var citeTb = GetCiteTable(dbAccount);
-			citeTb.LoadFromDb(false);
+			citeTb.ReadFromDb(false);
 		}
 
         public static void ReInitCiteTables()
@@ -67,7 +77,7 @@ namespace Bot.Robot.Rule.QaCiteTableV2
                 foreach (string dbAccount in dict.Keys)
                 {
                     var citeTb = GetCiteTable(dbAccount);
-                    citeTb.LoadFromDb(true);
+                    citeTb.ReadFromDb(true);
                 }
                 GC.Collect();
             }

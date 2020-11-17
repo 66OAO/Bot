@@ -51,7 +51,7 @@ namespace Bot.Common.Account
 
         public static HashSet<string> GetDbAccounts()
         {
-            return AccountHelper.ConvertNicksToDbAccount(QnHelper.Detected.GetNicks());
+            return AccountHelper.ConvertNicksToDbAccount(QnHelper.Detected.GetSellers());
         }
 
         public static HashSet<string> ConvertNicksToDbAccount(string[] nicks)

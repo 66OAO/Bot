@@ -377,10 +377,10 @@ namespace Bot
                 Params.Auth.IsAllAccountEditRobotDefault = true;
             }
 
-            public static string GetSuperAccounts(string mainnick)
+            public static HashSet<string> GetSuperAccounts(string mainnick)
             {
                 //TbNickHelper.AssertMainNick(mainnick);
-                return PersistentParams.GetParam2Key<string>("Auth.SuperAccounts", mainnick, string.Empty);
+                return PersistentParams.GetParam2Key<HashSet<string>>("Auth.SuperAccounts", mainnick,null);
             }
 
             public static void SetSuperAccounts(string nick, string accounts)
@@ -417,8 +417,6 @@ namespace Bot
             {
                 PersistentParams.TrySaveParam2Key<bool>("IsAllAccountEditRobot", AccountHelper.GetPubDbAccount(nick), isAllAccountEditRobot);
             }
-
-
         }
 
 

@@ -37,7 +37,7 @@ namespace Bot.Robot.Rule.QaCiteTableV2
             _citeTable = citeTable;
         }
 
-        public void AddInputPromptWordCite(ShortcutEntity shortcut)
+        public void AddOrUpdateInputPromptWordCite(ShortcutEntity shortcut)
         {
             if (shortcut == null || (string.IsNullOrEmpty(shortcut.Title) && string.IsNullOrEmpty(shortcut.Text))) return;
             var text = string.Concat(shortcut.Code, " ", shortcut.Title, " ", shortcut.Text);
@@ -54,10 +54,10 @@ namespace Bot.Robot.Rule.QaCiteTableV2
             else
             {
                 var wdDict = WordSpliter.Split(text, true);
-                int wordsCount = wdDict.Values.Sum(k => k.Count);
-                if (wordsCount > 0)
+                int wordCount = wdDict.Values.Sum(k => k.Count);
+                if (wordCount > 0)
                 {
-                    var prompt = InputPromptString.Create(text, wordsCount, wdDict, shortcut);
+                    var prompt = InputPromptString.Create(text, wordCount, wdDict, shortcut);
                     if (_prompDict.TryAdd(key, prompt))
                     {
                         foreach (var w in wdDict)
@@ -71,7 +71,7 @@ namespace Bot.Robot.Rule.QaCiteTableV2
 
         private InputPromptWordCiteData GetInputPromptWordCiteData(string wd)
         {
-            var wordCiteData = _citeTable.GetWordCiteData(wd);
+            var wordCiteData = _citeTable.TryGetWordCiteData(wd);
             if (wordCiteData.Prompt == null)
             {
                 wordCiteData.Prompt = new InputPromptWordCiteData();
@@ -203,7 +203,7 @@ namespace Bot.Robot.Rule.QaCiteTableV2
 
         private InputPromptWordCiteData GetInputPromptWordCite(string text)
         {
-            WordCiteData wordCiteData = _citeTable.GetWordCite(text);
+            WordCiteData wordCiteData = _citeTable.TryGetWordCiteData(text);
             if (wordCiteData.Prompt == null)
             {
                 wordCiteData.Prompt = new InputPromptWordCiteData();

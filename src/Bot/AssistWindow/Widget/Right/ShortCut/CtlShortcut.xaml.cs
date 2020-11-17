@@ -21,6 +21,7 @@ using BotLib.Wpf.Extensions;
 using Xceed.Wpf.Toolkit;
 using DbEntity;
 using Bot.Options;
+using Bot.Robot.Rule.QaCiteTableV2;
 
 namespace Bot.AssistWindow.Widget.Right.ShortCut
 {
@@ -407,13 +408,13 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
                 {
                     TreeNode showFrom = catEt;
                     var entityId = catEt.EntityId;
-                    ctv.Init(_pubTvController, null, null, false, entityId == ((_pubTvController != null) ? _pubTvController.DbAccessor.Root.EntityId : null), targetNodeId, showFrom, this.HasAuth);
+                    ctv.Init(_pubTvController, null, null, false, entityId == ((_pubTvController != null) ? _pubTvController.DbAccessor.Root.EntityId : null), targetNodeId, showFrom, this.CanEditShortCut);
                 }
                 else
                 {
                     var showFrom = catEt;
                     var entityId = catEt.EntityId;
-                    ctv.Init(_prvTvController, null, null, false, entityId == ((_prvTvController != null) ? _prvTvController.DbAccessor.Root.EntityId : null), targetNodeId, showFrom, this.HasAuth);
+                    ctv.Init(_prvTvController, null, null, false, entityId == ((_prvTvController != null) ? _prvTvController.DbAccessor.Root.EntityId : null), targetNodeId, showFrom, this.CanEditShortCut);
                 }
                 this.BindEvent(ctv, true);
                 this.SetTooltip(ctv);
@@ -456,22 +457,22 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
 
         private bool CanEdit(CtlTreeView ctv)
         {
-            return this.IsInPrvTabItem(ctv);
+            return this.IsInsidePrvTabItem(ctv) || QnHelper.Auth.CanEditShortCut(this._seller, "编辑话术");;
         }
 
-        private bool IsInPrvTabItem(CtlTreeView ctv)
+        private bool IsInsidePrvTabItem(CtlTreeView ctv)
         {
-            bool result;
+            bool rt;
             if (this.grdSearch.IsVisible)
             {
-                result = (this._prvSearchMouseDownTime > this._pubSearchMouseDownTime);
+                rt = (this._prvSearchMouseDownTime > this._pubSearchMouseDownTime);
             }
             else
             {
                 TabItemTag tag = this.FindRootTabItemTag(ctv);
-                result = !tag.IsShopShortcut;
+                rt = !tag.IsShopShortcut;
             }
-            return result;
+            return rt;
         }
 
         private TabItemTag FindRootTabItemTag(CtlTreeView ctv)
@@ -661,6 +662,7 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
                 ctv.CreateCatalog(null, (node) =>
                 {
                     this.LoadDatas(ctv, node.EntityId);
+                    CiteTableManagerV2.AddOrUpdateShortcutToInputPromptWordCite(node as ShortcutEntity);
                 });
             }
         }
@@ -678,6 +680,7 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
                 ctv.EditAsync((node) =>
                 {
                     LoadDatas(ctv, node.EntityId);
+                    CiteTableManagerV2.AddOrUpdateShortcutToInputPromptWordCite(node as ShortcutEntity);
                 });
             }
         }
@@ -746,9 +749,9 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
             }
         }
 
-        private bool HasAuth()
+        private bool CanEditShortCut()
         {
-            return true; //QnHelper.Auth.HasAuth(this._seller);
+            return QnHelper.Auth.CanEditShortCut(this._seller);
         }
 
         private void ShowSearchGrid(bool showSearchGrd)
@@ -817,13 +820,11 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
             TreeNode n = this.ReadSelectedNode();
             if (n is ShortcutEntity)
             {
-                ShortcutEntity shortcutEntity = n as ShortcutEntity;
-                rtText = shortcutEntity.Text;
+                rtText = (n as ShortcutEntity).Text;
             }
             else if (n is ShortcutCatalogEntity)
             {
-                ShortcutCatalogEntity shortcutCatalogEntity = n as ShortcutCatalogEntity;
-                rtText = shortcutCatalogEntity.Name;
+                rtText = (n as ShortcutCatalogEntity).Name;
             }
             return rtText;
         }
@@ -957,7 +958,7 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
 
         private void mPasteNode_Click(object sender, RoutedEventArgs e)
         {
-            CtlTreeView showingTreeview = this.GetShowingTreeview(null);
+            var showingTreeview = this.GetShowingTreeview(null);
             if (this.CanEdit(showingTreeview))
             {
                 if (this._nodeToBeCopy == null)
@@ -987,14 +988,14 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
 
         private TreeNode GetTabItemCatalog()
         {
-            CtlTreeView showingTreeview = this.GetShowingTreeview(null);
+            var showingTreeview = this.GetShowingTreeview(null);
             return this.FindRootTabItemTag(showingTreeview).CatEntity;
         }
 
         private void PasteNode(TreeNode targetNode)
         {
-            TreeDbAccessor toDbAccessor = this.GetDbAccessor(targetNode);
-            TreeDbAccessor fromDbAccessor = this.GetDbAccessor(this._nodeToBeCopy);
+            var toDbAccessor = this.GetDbAccessor(targetNode);
+            var fromDbAccessor = this.GetDbAccessor(this._nodeToBeCopy);
             TreeNode n;
             if (this.IsCatalog(targetNode))
             {
@@ -1044,11 +1045,11 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
 
         private TreeNode CreateShortcut(ShortcutEntity fromShortcut, string dbAccount)
         {
-            ShortcutEntity shortcutEntity = EntityHelper.Create<ShortcutEntity>(dbAccount);
-            shortcutEntity.Text = fromShortcut.Text;
-            shortcutEntity.ImageName = ShortcutImageHelper.AddNewImage(fromShortcut.ImageName);
-            shortcutEntity.Code = fromShortcut.Code;
-            return shortcutEntity;
+            var shortcut = EntityHelper.Create<ShortcutEntity>(dbAccount);
+            shortcut.Text = fromShortcut.Text;
+            shortcut.ImageName = ShortcutImageHelper.AddNewImage(fromShortcut.ImageName);
+            shortcut.Code = fromShortcut.Code;
+            return shortcut;
         }
 
         private TreeNode CreateShortcutCatalog(ShortcutCatalogEntity fromCat, string dbAccount)

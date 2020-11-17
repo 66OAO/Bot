@@ -79,7 +79,7 @@ namespace Bot.ControllerNs
                 var workMode = WorkModeHelper.GetWorkMode(nick);
                 if (workMode == WorkModeEnum.Assist)
                 {
-                    LoadDataFromLocDb(nick); //init data
+                    ReadDataFromDb(nick); //init data
                 }
             }
             //从服务器同步数据
@@ -118,7 +118,7 @@ namespace Bot.ControllerNs
             }
         }
 
-        public static void LoadDataFromLocDb(string sellerName)
+        public static void ReadDataFromDb(string sellerName)
         {
             CiteTableManagerV2.InitCiteTables(TbNickHelper.ConvertNickToPubDbAccount(sellerName));
         }

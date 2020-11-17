@@ -43,7 +43,7 @@ namespace Bot.Options
 			_sellerMain = TbNickHelper.GetMainPart(seller);
 			tbkTip.Text = string.Format("请输入【{0}】店铺的【特权子账号(权限与主账号一样)】：(输入子账号部分即可，多个账号用逗号分隔)", _sellerMain);
             var superAccounts = Params.Auth.GetSuperAccounts(_sellerMain);
-            tboxNicks.Text = superAccounts;
+            tboxNicks.Text = superAccounts.xToString(" ，");
 			if (Params.Auth.GetIsAllAccountEditKnowledge(seller))
 			{
 				rbtKnAll.IsChecked = true;

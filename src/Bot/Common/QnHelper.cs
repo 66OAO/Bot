@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using BotLib.Extensions;
 using Bot.Automation.ChatDeskNs;
 using Bot.Automation.ChatDeskNs.Automators;
+using DbEntity;
+using System.Collections.Concurrent;
 
 namespace Bot.Common
 {
@@ -18,54 +20,209 @@ namespace Bot.Common
     {
         public class Detected
         {
-            public static Dictionary<string, LoginedSeller> _cachedNicks { get; set; }
+            public static Dictionary<string, LoginedSeller> _cachedSellers { get; set; }
+			private static ConcurrentDictionary<string, DateTime> _sellerHistory;
             static Detected()
             {
-                _cachedNicks = new Dictionary<string, LoginedSeller>();
+                _cachedSellers = new Dictionary<string, LoginedSeller>();
+				QnHelper.Detected._sellerHistory = new ConcurrentDictionary<string, DateTime>();
             }
 
             public static LoginedSeller GetSellerFromCache(string seller)
             {
-                return _cachedNicks[seller];
+                return _cachedSellers[seller];
             }
 
-            public static string[] GetNicks()
+            public static string[] GetSellers()
             {
-                return _cachedNicks == null ? new List<string>().ToArray() : _cachedNicks.Keys.ToArray();
+                return _cachedSellers == null ? new List<string>().ToArray() : _cachedSellers.Keys.ToArray();
             }
 
-            public static Dictionary<string, LoginedSeller> Update(Dictionary<string, LoginedSeller> allNicks, out HashSet<string> removeNicks)
+            public static Dictionary<string, LoginedSeller> Update(Dictionary<string, LoginedSeller> sellers, out HashSet<string> closed)
             {
-                removeNicks = new HashSet<string>();
+                closed = new HashSet<string>();
                 var newNicks = new Dictionary<string, LoginedSeller>();
-                foreach (var nick in allNicks)
+                foreach (var skv in sellers)
                 {
-                    if (!_cachedNicks.ContainsKey(nick.Key))
+                    if (!_cachedSellers.ContainsKey(skv.Key))
                     {
-                        var chatDesk = ChatDesk.GetDeskFromCache(nick.Key);
+                        var chatDesk = ChatDesk.GetDeskFromCache(skv.Key);
                         if (chatDesk != null)
                         {
                             chatDesk.CheckAlive();
-                            removeNicks.Add(nick.Key);
+                            closed.Add(skv.Key);
                             Log.Error("Detected, 检测到异常的ChatDesk");
                         }
                         else
                         {
-                            newNicks[nick.Key] = nick.Value;
+                            newNicks[skv.Key] = skv.Value;
                         }
                     }
+					QnHelper.Detected._sellerHistory[skv.Key] = DateTime.Now;
                 }
-                foreach (var oldNick in _cachedNicks)
+                foreach (var oldNick in _cachedSellers)
                 {
-                    if (!allNicks.ContainsKey(oldNick.Key))
+                    if (!sellers.ContainsKey(oldNick.Key))
                     {
-                        removeNicks.Add(oldNick.Key);
+                        closed.Add(oldNick.Key);
                     }
                 }
-                _cachedNicks = allNicks;
+                _cachedSellers = sellers;
                 return newNicks;
             }
 
+            public static string[] GetLatest5SecDetectedNicksNotNull()
+			{
+				string[] nicks = null;
+				try
+				{
+					var set = HashSetEx.Create<string>(_sellerHistory.Where(kv=>kv.Value.xElapse().TotalSeconds < 5.0).Select(kv=>kv.Key));
+					set.xAddRange(GetSellers());
+					nicks = (set.ToArray<string>() ?? new string[0]);
+				}
+				catch (Exception e)
+				{
+					Log.Exception(e);
+				}
+				return nicks;
+			}
+        }
+
+        public class Auth
+		{
+			private static string _key;
+			private const int MaxShortcutCantEditTipCount = 3;
+			private static int ShortcutCantEditTipCount;
+
+			static Auth()
+			{
+				QnHelper.Auth._key = HybridKey.SuperSubAccount.ToString();
+				QnHelper.Auth.ShortcutCantEditTipCount = 0;
+            }
+
+            public static bool IsSuperAccount(string seller)
+			{
+				var mainPart = TbNickHelper.GetMainPart(seller);
+				return mainPart == seller || QnHelper.Auth.GetSuperAccounts(mainPart).Contains(seller);
+			}
+
+			public static HashSet<string> GetSuperAccounts(string mainNick)
+			{
+				Util.Assert(TbNickHelper.IsMainAccount(mainNick));
+				var subAccs = Params.Auth.GetSuperAccounts(mainNick) ?? new HashSet<string>();
+                var superAccs = HashSetEx.Create<string>(subAccs.Select(k => mainNick+":"+k));
+                superAccs.Add(mainNick);
+                return superAccs;
+			}
+
+            public static bool CanEditKnowledge(string seller)
+			{
+				return QnHelper.Auth.CanEditKnowledge(seller, "编辑宝贝重量");
+			}
+
+            public static bool CanEditLogisData(string seller, bool showDesc = true)
+			{
+				return QnHelper.Auth.IsActiveSuperAccount(seller, showDesc ? "编辑物流信息" : null);
+			}
+
+            public static bool CanDeleteFavoriteNote(string seller, bool showDesc = true)
+			{
+				return QnHelper.Auth.IsActiveSuperAccount(seller, showDesc ? "删除【常用】顾客便签" : null);
+			}
+
+            public static bool CanDeleteFavoriteBuyerNote(string seller, bool showDesc = true)
+			{
+				return QnHelper.Auth.IsActiveSuperAccount(seller, showDesc ? "删除【常用】备忘" : null);
+			}
+
+            public static bool IsActiveSuperAccount(string seller, string desc = null)
+			{
+                var isSuperAccount = false;
+				string mainPart = TbNickHelper.GetMainPart(seller);
+				if (seller == mainPart)
+				{
+					isSuperAccount = true;
+				}
+				else
+				{
+					var superAccounts = Auth.GetSuperAccounts(mainPart);
+                    var activeNicks = Detected.GetLatest5SecDetectedNicksNotNull();
+					foreach (var acc in superAccounts)
+					{
+                        if (activeNicks.Contains(acc))
+						{
+							isSuperAccount = true;
+							break;
+						}
+					}
+				}
+				if (!isSuperAccount && !string.IsNullOrEmpty(desc))
+				{
+					var msg = string.Format("【{0}】没有【{1}】的权限\r\n\r\n需要在电脑上登录【{2}】店铺的主账号或者特权子账号才能{1}！\r\n\r\n是否查看如何设置特权子账号？", seller, desc
+                        ,mainPart);
+					MsgBox.ShowTip(msg, showHelp =>
+					{
+						if (showHelp)
+						{
+						}
+					}, "提示");
+				}
+				return isSuperAccount;
+			}
+
+            public static bool CanDeleteAllBuyerNote(string seller, bool showDesc = true)
+			{
+				return QnHelper.Auth.IsActiveSuperAccount(seller, showDesc ? "删除【全部】顾客便签" : null);
+			}
+
+            public static bool CanEditShortCut(string seller, string desc = "编辑话术")
+			{
+				bool rt = false;
+				if (Params.Auth.GetIsAllAccountEditShortCut(seller))
+				{
+					rt = true;
+				}
+				else if (QnHelper.Auth.ShortcutCantEditTipCount < 3)
+				{
+					if (!(rt = QnHelper.Auth.IsActiveSuperAccount(seller, desc)))
+					{
+						QnHelper.Auth.ShortcutCantEditTipCount++;
+					}
+				}
+				else if (!(rt = QnHelper.Auth.IsActiveSuperAccount(seller, null)))
+				{
+					Util.Beep();
+				}
+				return rt;
+			}
+
+            public static bool CanEditKnowledge(string seller, string desc = "编辑宝贝知识")
+			{
+				return Params.Auth.GetIsAllAccountEditKnowledge(seller) || QnHelper.Auth.IsActiveSuperAccount(seller, desc);
+			}
+
+            public static bool CanExportKnowledge(string seller)
+			{
+				return QnHelper.Auth.CanEditKnowledge(seller, "导出宝贝知识");
+			}
+
+            public static bool CanEditRobot(string seller)
+			{
+				return Params.Auth.GetIsAllAccountEditRobot(seller) || QnHelper.Auth.IsActiveSuperAccount(seller, "编辑机器人规则");
+			}
+
+		}
+
+        static QnHelper()
+        {
+            _wwcmdpath = null;
+            _isUpdatingQnVersionCache = false;
+            _isQnVersionLessThanCache = new Dictionary<string, bool>();
+            _qnVer = "";
+            _qnVersionCacheTime = DateTime.MinValue;
+            _qnVersionSection3 = -1;
+            _qnVersionSection2 = -1;
+            _qnVersionSection1 = -1;
         }
 
         public static string _qnVer { get; set; }
@@ -187,17 +344,6 @@ namespace Bot.Common
             }
         }
 
-        static QnHelper()
-        {
-            _wwcmdpath = null;
-            _isUpdatingQnVersionCache = false;
-            _isQnVersionLessThanCache = new Dictionary<string, bool>();
-            _qnVer = "";
-            _qnVersionCacheTime = DateTime.MinValue;
-            _qnVersionSection3 = -1;
-            _qnVersionSection2 = -1;
-            _qnVersionSection1 = -1;
-        }
 
         public static DateTime ConvertQianNiuMsTickToDataTime(long mstick)
         {
