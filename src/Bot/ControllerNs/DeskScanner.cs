@@ -47,8 +47,8 @@ namespace Bot.ControllerNs
             try
             {
                 RegisterHotKey();
-                HashSet<string> removeNicks;
-                var newSellers = GetNewSellers(out removeNicks);
+                HashSet<string> closed;
+                var newSellers = GetNewSellers(out closed);
                 if (!newSellers.xIsNullOrEmpty())
                 {
                     var nicks = newSellers.Keys.ToList();
@@ -123,11 +123,11 @@ namespace Bot.ControllerNs
             CiteTableManagerV2.InitCiteTables(TbNickHelper.ConvertNickToPubDbAccount(sellerName));
         }
 
-        private static Dictionary<string, LoginedSeller> GetNewSellers(out HashSet<string> removeNicks)
+        private static Dictionary<string, LoginedSeller> GetNewSellers(out HashSet<string> closed)
         {
             var allSellers = QnAccountFinderFactory.Finder.GetLoginedSellers();
             DetectQianniu(allSellers);
-            var newSellers = QnHelper.Detected.Update(allSellers, out removeNicks);
+            var newSellers = QnHelper.Detected.Update(allSellers, out closed);
             return newSellers;
         }
 
