@@ -14,7 +14,19 @@ namespace Bot.Automation.ChatDeskNs
         public static DeskAutomator Create(HwndInfo hwndInfo, string seller)
         {
             DeskAutomator automator;
-            if (QnHelper.IsGreaterV6_07_00N())
+            if (QnHelper.IsGreaterV7_30_67N())
+            {
+                automator = new DeskAutomatorV7_30_67N(hwndInfo, seller);
+            }
+            else if (QnHelper.IsGreaterV7_21_00N())
+            {
+                automator = new DeskAutomatorV7_21_00N(hwndInfo, seller);
+            }
+            else if (QnHelper.IsGreaterV7_20_00N())
+            {
+                automator = new DeskAutomatorV7_20_00N(hwndInfo, seller);
+            }
+            else if (QnHelper.IsGreaterV6_07_00N())
             {
                 automator = new DeskAutomatorV6_07_00N(hwndInfo, seller);
             }

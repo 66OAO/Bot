@@ -238,6 +238,9 @@
     <Compile Include="AssistWindow\WndAssist.xaml.cs">
       <DependentUpon>WndAssist.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Automation\ChatDeskNs\Automators\DeskAutomators\DeskAutomatorV7_20_00N.cs" />
+    <Compile Include="Automation\ChatDeskNs\Automators\DeskAutomators\DeskAutomatorV7_21_00N.cs" />
+    <Compile Include="Automation\ChatDeskNs\Automators\DeskAutomators\DeskAutomatorV7_30_67N.cs" />
     <Compile Include="Automation\ChatDeskNs\Automators\LoginedSeller.cs" />
     <Compile Include="Automation\ChatDeskNs\Component\BuyerInfoWindowNameReader.cs" />
     <Compile Include="Automation\ChatDeskNs\Component\ChatDeskContact.cs" />

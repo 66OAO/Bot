@@ -19,18 +19,21 @@ namespace Bot.Automation
     {
         public enum ClsNameEnum
         {
-            Unknown,
-            StandardWindow,
-            StandardButton,
-            SplitterBar,
-            RichEditComponent,
-            PrivateWebCtrl,
-            Aef_WidgetWin_0,
-            ToolBarPlus,
-            Aef_RenderWidgetHostHWND,
-            SuperTabCtrl,
-            StackPanel,
-            EditComponent
+			Unknown,
+			StandardWindow,
+			StandardButton,
+			SplitterBar,
+			RichEditComponent,
+			PrivateWebCtrl,
+			CefBrowserWindow,
+			Aef_WidgetWin_0,
+			Chrome_WidgetWin_0,
+			Chrome_RenderWidgetHostHWND,
+			ToolBarPlus,
+			Aef_RenderWidgetHostHWND,
+			SuperTabCtrl,
+			StackPanel,
+			EditComponent
         }
         public class WindowClue
         {

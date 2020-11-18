@@ -406,6 +406,18 @@ namespace Bot.Common
             }
             return ver;
         }
+        public static bool IsGreaterV7_30_67N()
+        {
+            return !IsLessQnVersion(7, 30, 67);
+        }
+        public static bool IsGreaterV7_21_00N()
+        {
+            return !IsLessQnVersion(7, 21,0);
+        }
+        public static bool IsGreaterV7_20_00N()
+        {
+            return !IsLessQnVersion(7, 20, 0);
+        }
         public static bool IsGreaterV6_07_00N()
         {
             return !IsLessQnVersion(6, 7, 0);
