@@ -53,7 +53,7 @@ namespace Bot.AssistWindow.NotifyIcon
             {
                 Visibility = Visibility.Collapsed;
             }, 2000, true);
-            notifyIcon.Text = string.Format("{0}({1})", "千牛客服", Params.VersionStr);
+            notifyIcon.Text = string.Format("{0}({1})", Params.AppName, Params.VersionStr);
             CreateHelpMenu();
             notifyIcon.StartBlink(base.FindResource("iconGray") as ImageSource);
 

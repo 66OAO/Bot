@@ -5,7 +5,10 @@ namespace DbEntity
 {
 	public class HybridEntity : EntityBase
 	{
-		[NotNull]
+		private string _key;
+		private string _value;
+        
+        [NotNull]
 		public string Key
 		{
 			get
@@ -29,9 +32,5 @@ namespace DbEntity
 				base.SetValue<string>(ref this._value, value);
 			}
 		}
-
-		private string _key;
-
-		private string _value;
 	}
 }

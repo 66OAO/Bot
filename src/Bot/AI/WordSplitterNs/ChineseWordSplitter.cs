@@ -307,6 +307,11 @@ namespace Bot.AI.WordSplitterNs
 
         public class SplitInfo
         {
+            public string Context;
+            public int StartIndex;
+            public int Length;
+            public bool IsWord;
+
             public string Text
             {
                 get
@@ -322,14 +327,6 @@ namespace Bot.AI.WordSplitterNs
                     return this.StartIndex + this.Length;
                 }
             }
-
-            public string Context;
-
-            public int StartIndex;
-
-            public int Length;
-
-            public bool IsWord;
         }
     }
 }

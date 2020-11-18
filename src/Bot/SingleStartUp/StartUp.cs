@@ -28,7 +28,7 @@ namespace Bot.SingleStartUp
 					}
 					else
 					{
-                        MessageBox.Show("千牛客服已经运行了！", "千牛客服");
+                        MessageBox.Show("软件已经运行了！", Params.AppName);
 						Application app = Application.Current;
 						if (app != null)
 						{
@@ -39,7 +39,7 @@ namespace Bot.SingleStartUp
 			}
 			catch (Exception ex)
 			{
-                MessageBox.Show("OnStartup:" + ex.Message, "千牛客服");
+                MessageBox.Show("OnStartup:" + ex.Message, Params.AppName);
 				Log.Exception(ex);
 			}
 		}

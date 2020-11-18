@@ -5,9 +5,7 @@ namespace DbEntity
 	public class TreeNode : EntityBase
     {
         private string _nextId;
-
         private string _parentId;
-
         private string _prevId;
 
 		public string NextId

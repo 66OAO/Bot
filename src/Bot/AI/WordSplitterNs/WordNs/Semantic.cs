@@ -5,6 +5,9 @@ namespace Bot.AI.WordSplitterNs.WordNs
 {
 	public abstract class Semantic
 	{
+        protected abstract string[] GetSemantics();
+		private string[] _semantic;
+
 		[JsonIgnore]
 		public string[] Semantics
 		{
@@ -17,9 +20,5 @@ namespace Bot.AI.WordSplitterNs.WordNs
 				return this._semantic;
 			}
 		}
-
-        protected abstract string[] GetSemantics();
-
-		private string[] _semantic;
 	}
 }

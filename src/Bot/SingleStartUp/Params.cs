@@ -262,7 +262,7 @@ namespace Bot
 
         public static string AppSecret;
 
-        private static string _server = "http://localhost:30006/api/bot/";
+        private static string _server = "http://47.106.170.6/api/bot/";
 
         private const bool _isUseLocalTestServer = false;
 
@@ -270,7 +270,7 @@ namespace Bot
 
         public const int KeepInstalledVersionsCount = 3;
 
-        public const string AppName = "千牛客服";
+        public const string AppName = "QBot";
 
         private static bool? _isDevoloperClient;
 

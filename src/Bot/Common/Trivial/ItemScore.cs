@@ -8,14 +8,13 @@ namespace Bot.Common.Trivial
 {
     public class ItemScore<T>
     {
+        public double Score;
+        public T Item;
+
         public ItemScore(T item, double score)
 		{
 			this.Score = score;
 			this.Item = item;
 		}
-
-        public double Score;
-
-        public T Item;
     }
 }

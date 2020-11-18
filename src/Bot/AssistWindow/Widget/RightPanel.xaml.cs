@@ -72,7 +72,7 @@ namespace Bot.AssistWindow.Widget
 				Wnd = wnd;
 				lblSeller.Content = Wnd.Desk.Seller;
 				string seller = Wnd.Desk.Seller;
-                string[] tabs = new string[] { "话术", "机器人" };
+                string[] tabs = new string[] { "话术"/*, "机器人"*/ };
                 foreach (string tabName in tabs)
                 {
                     TabTypeEnum tabType = GetTabType(tabName);

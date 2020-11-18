@@ -121,6 +121,7 @@ namespace Bot.ControllerNs
         public static void ReadDataFromDb(string sellerName)
         {
             CiteTableManagerV2.InitCiteTables(TbNickHelper.ConvertNickToPubDbAccount(sellerName));
+            CiteTableManagerV2.InitCiteTables(TbNickHelper.ConvertNickToPrvDbAccount(sellerName));
         }
 
         private static Dictionary<string, LoginedSeller> GetNewSellers(out HashSet<string> closed)
@@ -137,7 +138,7 @@ namespace Bot.ControllerNs
             {
                 if (!_hadDetectSellerEver && !_hadTipNoSellerEver)
                 {
-                    string msg;
+                    var msg = string.Empty;
                     if (QnHelper.HasQnRunning)
                     {
                         msg = string.Format("需要打开千牛【聊天窗口】,{0}才能起作用", "提示");

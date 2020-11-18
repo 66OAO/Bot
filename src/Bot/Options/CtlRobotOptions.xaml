@@ -74,7 +74,7 @@
 						</GroupBox>
 						<CheckBox
 							Name="cboxCancelAutoOnReset"
-							Margin="0 5 0 0">重启千牛客服时，取消全自动模式（避免一启动就自动回复）（推荐）</CheckBox>
+							Margin="0 5 0 0">重启软件时，取消全自动模式（避免一启动就自动回复）（推荐）</CheckBox>
 					</StackPanel>
 				</GroupBox>
 				<GroupBox

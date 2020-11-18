@@ -4,8 +4,12 @@ using BotLib.Extensions;
 namespace DbEntity
 {
 	public class ShortcutEntity : TreeNode
-	{
+    {
+        private string _uniformCode;
 		public string Code { get; set; }
+        public string Text { get; set; }
+		public string ImageName { get; set; }
+		public string Title { get; set; }
 
 		public string GetUniformCode()
 		{
@@ -23,11 +27,6 @@ namespace DbEntity
 			return this._uniformCode;
 		}
 
-		public string Text { get; set; }
-
-		public string ImageName { get; set; }
-
-		public string Title { get; set; }
 
 		public string GetShowTitle()
 		{
@@ -53,7 +52,5 @@ namespace DbEntity
 			}
 			return text.xRemoveLineBreak(" ");
 		}
-
-		private string _uniformCode;
 	}
 }

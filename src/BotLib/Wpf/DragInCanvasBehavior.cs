@@ -41,11 +41,6 @@ namespace BotLib.Wpf
             this.AssociatedObject.RemoveHandler(UIElement.MouseMoveEvent, this._moveHandler);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void AssociatedObject_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (_isDraging)

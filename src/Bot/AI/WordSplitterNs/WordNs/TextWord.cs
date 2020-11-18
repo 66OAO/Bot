@@ -5,13 +5,13 @@ namespace Bot.AI.WordSplitterNs.WordNs
 {
 	public class TextWord : Semantic
 	{
+		public string Text { get; set; }
+
 		[JsonConstructor]
 		public TextWord(string text)
 		{
 			this.Text = text;
 		}
-
-		public string Text { get; set; }
 
         protected override string[] GetSemantics()
 		{

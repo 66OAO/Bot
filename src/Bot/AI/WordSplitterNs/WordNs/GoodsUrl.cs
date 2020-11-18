@@ -6,11 +6,7 @@ namespace Bot.AI.WordSplitterNs.WordNs
 {
 	public class GoodsUrl : UrlWord
 	{
-		[JsonConstructor]
-		public GoodsUrl(string text): base(text)
-		{
-		}
-
+		private string _gid;
 		[JsonIgnore]
 		public string Gid
 		{
@@ -24,6 +20,11 @@ namespace Bot.AI.WordSplitterNs.WordNs
 			}
 		}
 
+		[JsonConstructor]
+		public GoodsUrl(string text): base(text)
+		{
+		}
+
         protected override string[] GetSemantics()
 		{
 			return new string[]
@@ -33,7 +34,5 @@ namespace Bot.AI.WordSplitterNs.WordNs
 				"W_GoodsUrl_" + this.Gid
 			};
 		}
-
-		private string _gid;
 	}
 }

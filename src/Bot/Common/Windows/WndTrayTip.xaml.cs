@@ -36,11 +36,11 @@ namespace Bot.Common.Windows
             this.InitializeComponent();
             if (string.IsNullOrEmpty(title))
             {
-                Title = "千牛客服";
+                Title = Params.AppName;
             }
             else
             {
-                Title = title + " --- 千牛客服";
+                Title = title + " --- " + Params.AppName;
             }
             this._showText = (showText ?? "");
             this._showSecond = showSecond;

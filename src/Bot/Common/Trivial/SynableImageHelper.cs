@@ -184,7 +184,6 @@ namespace Bot.Common.Trivial
             return AddNewImage(imageName);
         }
 
-
         public string AddNewImage(string fullFn)
         {
             string imagePath = null;

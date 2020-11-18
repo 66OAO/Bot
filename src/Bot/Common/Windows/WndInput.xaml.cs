@@ -20,6 +20,10 @@ namespace Bot.Common.Windows
 {
     public partial class WndInput : EtWindow
     {
+        private string _helpUrl;
+        private VdWndInput _data;
+        private bool _isClosedByOkButton;
+
         private WndInput(string tip, string title, string inputText, string helpUrl, Func<string, string> func)
         {
             this._isClosedByOkButton = false;
@@ -118,12 +122,6 @@ namespace Bot.Common.Windows
         {
             this.tboxInput.SelectionStart = this.tboxInput.Text.Length;
         }
-
-        private string _helpUrl;
-
-        private WndInput.VdWndInput _data;
-
-        private bool _isClosedByOkButton;
 
         private class VdWndInput : ViewData
         {

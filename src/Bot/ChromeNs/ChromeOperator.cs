@@ -202,7 +202,6 @@ namespace Bot.ChromeNs
             this._isEnableChromeInspectorListening = false;
             this.Session = session;
         }
-
         public ChromeOperator(string sessionInfoUrl, HashSet<string> titles, bool isChatRecord)
         {
             this.hadevalinsertjs = false;
@@ -222,7 +221,6 @@ namespace Bot.ChromeNs
             var chromeSession = CreateChromeSession(sessionInfoUrl, titleClues, out otherWsUrls);
             return (chromeSession == null) ? null : new ChromeOperator(chromeSession);
         }
-
         private static ChromeSession CreateChromeSession(string sessionInfoUrl, HashSet<string> titles, bool isChatRecord)
         {
             var qnSessions = GetWebSocketSessionInfos(sessionInfoUrl);
@@ -242,7 +240,6 @@ namespace Bot.ChromeNs
             }
             return new ChromeSessionFactory().Create(sessionInfo.WebSocketDebuggerUrl, sessionInfo.Title);
         }
-
         private static ChromeSession CreateChromeSession(string sessionInfoUrl, List<string> titleClues, out List<ChromeSessionInfo> otherWsUrls)
         {
             otherWsUrls = null;

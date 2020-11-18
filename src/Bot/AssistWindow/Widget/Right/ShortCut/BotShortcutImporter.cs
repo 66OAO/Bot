@@ -19,7 +19,7 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
 
         public static bool IsFileType(string txt)
         {
-            return txt == "最初3行的内容请勿改动！！！";
+            return txt == "最初3行的内容请勿改动(V3)！！！";
         }
 
         public static string GetDbAccount(string fileName)
@@ -38,7 +38,7 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
             bool isOk = false;
             try
             {
-                isOk = (tmplist[0][0] == "最初3行的内容请勿改动！！！" && tmplist[2].xToCsvStringWithoutEscape() == "分组,快捷编码,内容,图片名,程序数据（手工新增词条时，本字段留空即可）");
+                isOk = (tmplist[0][0] == "最初3行的内容请勿改动(V3)！！！" && tmplist[2].xToCsvStringWithoutEscape() == "分组,快捷编码,标题,内容,图片名,程序数据（手工新增词条时，本字段留空即可）");
             }
             catch (Exception e)
             {
@@ -63,7 +63,7 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
                 var cName = dlist[i][0].Trim();
                 if (!string.IsNullOrEmpty(cName) && !ndict.ContainsKey(cName))
                 {
-                    this.FindDescendantNodes(cName, nlist, ndict, this.GetCataId(dlist[i][5]), catas);
+                    this.FindDescendantNodes(cName, nlist, ndict, this.GetCataId(dlist[i][4]), catas);
                 }
                 int level = ndict.ContainsKey(cName) ? ndict[cName] : 1;
                 nlist.Add(new Node
@@ -95,7 +95,7 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
         {
             var id = string.Empty;
             var vals = idValue.xSplitBySpace(StringSplitOptions.None);
-            if (vals.Length != 0)
+            if (vals.Length > 1)
             {
                 id = vals[1];
             }

@@ -10,6 +10,8 @@ namespace DbEntity
 {
 	public class UniformedString : IEquatable<UniformedString>
 	{
+		public readonly string Text;
+
 		[JsonConstructor]
 		private UniformedString(string text)
 		{
@@ -52,8 +54,6 @@ namespace DbEntity
 			}
 			return rt;
 		}
-
-		public readonly string Text;
 
 		private static class Cache
 		{

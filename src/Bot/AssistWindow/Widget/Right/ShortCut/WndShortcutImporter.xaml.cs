@@ -101,11 +101,11 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
 			if (!string.IsNullOrEmpty(fileName) && fileName != oldFileName)
 			{
 				this.wtboxFilename.Text = fileName;
-                var dbAccount = this.GetDbAccount(fileName);
-                if (!string.IsNullOrEmpty(dbAccount))
+				var dbAccount = this.GetDbAccount(fileName);
+				if (!string.IsNullOrEmpty(dbAccount))
 				{
-                    this.SetImportDataType(dbAccount);
-                    this.ImportOtherNickDataTip(dbAccount);
+					this.SetImportDataType(dbAccount);
+					this.ImportOtherNickDataTip(dbAccount);
 				}
 			}
 		}
@@ -120,9 +120,9 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
 			}
 		}
 
-        private void SetImportDataType(string dbAccount)
+		private void SetImportDataType(string dbAccount)
 		{
-            if (TbNickHelper.IsPubDbAccount(dbAccount))
+			if (TbNickHelper.IsPubDbAccount(dbAccount))
 			{
 				this.rbtPub.IsChecked = true;
 			}
@@ -132,9 +132,9 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
 			}
 		}
 
-        private string GetDbAccount(string fileName)
+		private string GetDbAccount(string fileName)
 		{
-            return BotShortcutImporter.GetDbAccount(fileName);
+			return BotShortcutImporter.GetDbAccount(fileName);
 		}
 
 		private void btnHelp_Click(object sender, RoutedEventArgs e)
@@ -147,7 +147,7 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
 			LocalParams.IsReplace = (isChecked.GetValueOrDefault() & isChecked != null);
 		}
 
-        private void btnImport_Click(object sender, RoutedEventArgs e)
+		private void btnImport_Click(object sender, RoutedEventArgs e)
 		{
 			this.Import();
 		}
@@ -176,10 +176,11 @@ namespace Bot.AssistWindow.Widget.Right.ShortCut
 					_onStartImport();
 				}
 				Task.Factory.StartNew(()=>{
+					Importer.Import(fn, isAllReplace, dbaccount);
+					if (_onImportFinished != null)
+						_onImportFinished();
 
-                    if (_onImportFinished != null)
-                        _onImportFinished();
-                }, TaskCreationOptions.LongRunning);
+				}, TaskCreationOptions.LongRunning);
 			}
 		}
 
