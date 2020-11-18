@@ -262,7 +262,7 @@ namespace Bot
 
         public static string AppSecret;
 
-        private static string _server = "http://47.106.170.6/api/bot/";
+        private static string _server = "http://47.106.170.6:8088/api/bot/";
 
         private const bool _isUseLocalTestServer = false;
 
