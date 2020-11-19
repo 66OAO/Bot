@@ -13,8 +13,11 @@
 6、自动更新
 
 窗口扫描器：ControllerNs.DeskScanner.cs
+
 托盘菜单：AssistWindow.NotifyIcon.CtlNotifyIcon.xaml
+
 托盘菜单的启动点：AppLife.OnStart()
+
 升级：ClientUpdater
 
 
